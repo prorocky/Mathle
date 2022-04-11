@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Base_Mathle : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class Base_Mathle : MonoBehaviour
 
     // Array for the board
     int [,] board = new int[6,7];
+
+    private GameObject cell1, cell2, cell3;
+    private Image image1, image2, image3;
+    private InputField field1, field2, field3;
+    private string opStr1, opStr2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +64,33 @@ public class Base_Mathle : MonoBehaviour
 
     public void getSolution(int op1, int op2, int num1, int num2, int num3){
         sequence[0] = num1;
-        Debug.Log("formula: "+ num1 + " " + op1 + " " + num2 + " " +  op2 + " " +  num3);
+
+        switch(op1){
+            case 0:
+                opStr1 = "+";
+                break;
+            case 1:
+                opStr1 = "-";
+                break;
+            case 2:
+                opStr1 = "*";
+                break;
+        }
+
+        switch(op2){
+            case 0:
+                opStr2 = "+";
+                break;
+            case 1:
+                opStr2 = "-";
+                break;
+            case 2:
+                opStr2 = "*";
+                break;
+        }
+
+        Debug.Log("formula: "+ "num" + " " + opStr1 + " " + num2 + " " +  opStr2 + " " +  num3);
+
 
         switch(op1) {
             case 0:
@@ -123,24 +156,58 @@ public class Base_Mathle : MonoBehaviour
         return;
     }
 
+    // HOW TO CHECK FOR VALID NUMBERS
+    // string s1 = "0";
+    // bool isNumber = int.TryParse(s1, out int n);
+    // print(isNumber);
+
     public void fillBoard(){
-        int num1 = Random.Range(0,8);
-        int num2 = Random.Range(0,8);
+        int num1 = Random.Range(0,7);
+        int num2 = Random.Range(0,7);
 
         while(num2 == num1){
-            num2 = Random.Range(0,8);
+            num2 = Random.Range(0,7);
         }
 
-        int num3 = Random.Range(0,8);
+        int num3 = Random.Range(0,7);
         while(num3 == num1 || num3 == num2){
-            num3 = Random.Range(0,8);
+            num3 = Random.Range(0,7);
         }
+
+        print(num1 + ", " + num2 + ", " + num3);
 
 
         for(int i = 0; i < 6; i++){
             board[i,num1] = sequence[num1];
+
+            //print("R" + (i+1).ToString() + "C" + num1.ToString());
+            cell1 = GameObject.Find("R" + (i+1).ToString() + "C" + (num1).ToString());
+            image1 = cell1.GetComponent<Image>();
+            image1.color = new Color(0, 1, 0, 1);
+            field1 = cell1.transform.GetChild(0).GetComponent<InputField>();
+            field1.text = sequence[num1].ToString();
+            field1.interactable = false;
+
+
             board[i,num2] = sequence[num2];
+
+            //print("R" + (i+1).ToString() + "C" + num2.ToString());
+            cell2 = GameObject.Find("R" + (i+1).ToString() + "C" + (num2).ToString());
+            image2 = cell2.GetComponent<Image>();
+            image2.color = new Color(0, 1, 0, 1);
+            field2 = cell2.transform.GetChild(0).GetComponent<InputField>();
+            field2.text = sequence[num2].ToString();
+            field2.interactable = false;
+
             board[i,num3] = sequence[num3];
+
+            //print("R" + (i+1).ToString() + "C" + num3.ToString());
+            cell3 = GameObject.Find("R" + (i+1).ToString() + "C" + (num3).ToString());
+            image3 = cell3.GetComponent<Image>();
+            image3.color = new Color(0, 1, 0, 1);
+            field3 = cell3.transform.GetChild(0).GetComponent<InputField>();
+            field3.text = sequence[num3].ToString();
+            field3.interactable = false;
         }
     }
 
