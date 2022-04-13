@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Base_Mathle : MonoBehaviour
 {
@@ -21,11 +22,13 @@ public class Base_Mathle : MonoBehaviour
     private InputField field1, field2, field3;
     private string opStr1, opStr2;
     private int currentRow = 0;     // keep track of what row player is on
+    EventSystem system;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        system = EventSystem.current;
         // 0 add, 1 sub, 2 mult
         // sequence op num2 op num3
         int op1 = Random.Range(0,3);
@@ -70,7 +73,20 @@ public class Base_Mathle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // if (Input.GetKeyDown(KeyCode.Tab))
+        // {
+        //     Selectable next = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+ 
+        //     if (next!= null) {
+                       
+        //         InputField inputfield = next.GetComponent<InputField>();
+        //         if (inputfield !=null) inputfield.OnPointerClick(new PointerEventData(system));  //if it's an input field, also set the text caret
+                       
+        //             system.SetSelectedGameObject(next.gameObject, new BaseEventData(system));
+    // }
+    //else Debug.Log("next nagivation element not found");
+   
+    // }
     }
 
     public void checkSolution() {
