@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class Base_Mathle : MonoBehaviour
     // Num array with solutions
     int [] sequence = new int[7];
 
+    // Array for keeping track of most complete answer
+    int [] playerSequence = new int[7];
+
     // Array for the board
     int [,] board = new int[6,7];
 
@@ -16,6 +20,7 @@ public class Base_Mathle : MonoBehaviour
     private Image image1, image2, image3;
     private InputField field1, field2, field3;
     private string opStr1, opStr2;
+    private int currentRow = 0;     // keep track of what row player is on
 
 
     // Start is called before the first frame update
@@ -53,6 +58,12 @@ public class Base_Mathle : MonoBehaviour
         printBoard();
         printSequence();
 
+        string str = "";
+        for(int j = 0; j < 7; j++){
+            str += playerSequence[j] + " ";
+        }
+        Debug.Log(str);
+
 
     }
 
@@ -60,6 +71,51 @@ public class Base_Mathle : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void checkSolution() {
+
+        if (Enumerable.SequenceEqual(sequence, playerSequence)) {
+            // function / code to end game here
+        }
+
+        // check current sequence and solution one by one
+        for (int i = 0; i < 7; i++) {
+            isNumCorrect(currentRow, i);
+        }
+
+    }
+
+    IEnumerator isNumCorrect(int row, int col) {
+        GameObject thisCell = GameObject.Find("R" + (row+1).ToString() + "C" + (col).ToString());
+        image1 = thisCell.GetComponent<Image>();
+        field1 = thisCell.transform.GetChild(0).GetComponent<InputField>();
+
+        // if number is correct, make green and store into player sequence object
+        if (board[row,col] == sequence[col]) {
+            // do flip animation?
+
+            // change color to green
+            image1.color = new Color(0, 1, 0, 1);
+            field1.text = sequence[col].ToString();
+
+        } else if (board[row,col] < sequence[col]) {
+            // do flip animation?
+
+            // change color to red
+            image1.color = Color.red;
+            field1.text = board[row,col].ToString();
+
+        } else {
+            // do flip animation?
+
+            // change color to blue
+            image1.color = Color.blue;
+            field1.text = board[row,col].ToString();
+
+        }
+        field1.interactable = false;
+        yield return new WaitForSeconds(1);
     }
 
     public void getSolution(int op1, int op2, int num1, int num2, int num3){
@@ -153,6 +209,7 @@ public class Base_Mathle : MonoBehaviour
                 }
             break;
         }
+
         return;
     }
 
@@ -160,6 +217,15 @@ public class Base_Mathle : MonoBehaviour
     // string s1 = "0";
     // bool isNumber = int.TryParse(s1, out int n);
     // print(isNumber);
+
+    public void fillRow() {
+        for (int i = 0; i < 7; i++) {
+            // if (playerSequence[i]) {
+
+            // }
+            // board[currentRow,i]
+        }
+    }
 
     public void fillBoard(){
         int num1 = Random.Range(0,7);
@@ -173,6 +239,10 @@ public class Base_Mathle : MonoBehaviour
         while(num3 == num1 || num3 == num2){
             num3 = Random.Range(0,7);
         }
+
+        playerSequence[num1] = sequence[num1];
+        playerSequence[num2] = sequence[num2];
+        playerSequence[num3] = sequence[num3];
 
         print(num1 + ", " + num2 + ", " + num3);
 
