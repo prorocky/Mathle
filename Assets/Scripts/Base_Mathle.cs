@@ -57,7 +57,7 @@ public class Base_Mathle : MonoBehaviour
 
         getSolution(op1,op2,num1,num2,num3);
 
-        fillBoard();
+        fillFirstRow();
         printBoard();
         printSequence();
 
@@ -66,44 +66,41 @@ public class Base_Mathle : MonoBehaviour
             str += playerSequence[j] + " ";
         }
         Debug.Log(str);
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.Tab))
-        // {
-        //     Selectable next = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
- 
-        //     if (next!= null) {
-                       
-        //         InputField inputfield = next.GetComponent<InputField>();
-        //         if (inputfield !=null) inputfield.OnPointerClick(new PointerEventData(system));  //if it's an input field, also set the text caret
-                       
-        //             system.SetSelectedGameObject(next.gameObject, new BaseEventData(system));
-    // }
-    //else Debug.Log("next nagivation element not found");
-   
-    // }
+        
+    }
+    public void testCell() {
+        GameObject row1 = GameObject.Find("Row" + (1).ToString());
+
+        
     }
 
-    public void checkSolution() {
+    public enum SolutionCode : int
+    {
+        GameOver = 1,
+        Continue = 2
+    };
+    public SolutionCode checkSolution() {
 
         if (Enumerable.SequenceEqual(sequence, playerSequence)) {
             // function / code to end game here
+            return SolutionCode.GameOver;
         }
 
         // check current sequence and solution one by one
         for (int i = 0; i < 7; i++) {
             isNumCorrect(currentRow, i);
         }
+        return SolutionCode.Continue;
 
     }
 
     IEnumerator isNumCorrect(int row, int col) {
-        GameObject thisCell = GameObject.Find("R" + (row+1).ToString() + "C" + (col).ToString());
+        GameObject thisCell = GameObject.Find("R" + (row).ToString() + "C" + (col).ToString());
         image1 = thisCell.GetComponent<Image>();
         field1 = thisCell.transform.GetChild(0).GetComponent<InputField>();
 
@@ -229,21 +226,20 @@ public class Base_Mathle : MonoBehaviour
         return;
     }
 
-    // HOW TO CHECK FOR VALID NUMBERS
-    // string s1 = "0";
-    // bool isNumber = int.TryParse(s1, out int n);
-    // print(isNumber);
-
     public void fillRow() {
         for (int i = 0; i < 7; i++) {
-            // if (playerSequence[i]) {
+            GameObject thisCell = GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString());
+            GameObject prevCell = GameObject.Find("R" + (currentRow - 1).ToString() + "C" + (i).ToString());
 
-            // }
-            // board[currentRow,i]
+            thisCell.GetComponent<Image>().color = prevCell.GetComponent<Image>().color;
+            thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
+            if (thisCell.GetComponent<Image>().color != Color.green) {
+                thisCell.GetComponentInChildren<InputField>().interactable = true;
+            }
         }
     }
 
-    public void fillBoard(){
+    public void fillFirstRow(){
         int num1 = Random.Range(0,7);
         int num2 = Random.Range(0,7);
 
@@ -263,38 +259,37 @@ public class Base_Mathle : MonoBehaviour
         print(num1 + ", " + num2 + ", " + num3);
 
 
-        for(int i = 0; i < 6; i++){
-            board[i,num1] = sequence[num1];
+        // changed to only first row
+        board[0,num1] = sequence[num1];
 
-            //print("R" + (i+1).ToString() + "C" + num1.ToString());
-            cell1 = GameObject.Find("R" + (i+1).ToString() + "C" + (num1).ToString());
-            image1 = cell1.GetComponent<Image>();
-            image1.color = new Color(0, 1, 0, 1);
-            field1 = cell1.transform.GetChild(0).GetComponent<InputField>();
-            field1.text = sequence[num1].ToString();
-            field1.interactable = false;
+        //print("R" + (i+1).ToString() + "C" + num1.ToString());
+        cell1 = GameObject.Find("R0C" + (num1).ToString());
+        image1 = cell1.GetComponent<Image>();
+        image1.color = new Color(0, 1, 0, 1);
+        field1 = cell1.transform.GetChild(0).GetComponent<InputField>();
+        field1.text = sequence[num1].ToString();
+        field1.interactable = false;
 
 
-            board[i,num2] = sequence[num2];
+        board[0,num2] = sequence[num2];
 
-            //print("R" + (i+1).ToString() + "C" + num2.ToString());
-            cell2 = GameObject.Find("R" + (i+1).ToString() + "C" + (num2).ToString());
-            image2 = cell2.GetComponent<Image>();
-            image2.color = new Color(0, 1, 0, 1);
-            field2 = cell2.transform.GetChild(0).GetComponent<InputField>();
-            field2.text = sequence[num2].ToString();
-            field2.interactable = false;
+        //print("R" + (i+1).ToString() + "C" + num2.ToString());
+        cell2 = GameObject.Find("R0C" + (num2).ToString());
+        image2 = cell2.GetComponent<Image>();
+        image2.color = new Color(0, 1, 0, 1);
+        field2 = cell2.transform.GetChild(0).GetComponent<InputField>();
+        field2.text = sequence[num2].ToString();
+        field2.interactable = false;
 
-            board[i,num3] = sequence[num3];
+        board[0,num3] = sequence[num3];
 
-            //print("R" + (i+1).ToString() + "C" + num3.ToString());
-            cell3 = GameObject.Find("R" + (i+1).ToString() + "C" + (num3).ToString());
-            image3 = cell3.GetComponent<Image>();
-            image3.color = new Color(0, 1, 0, 1);
-            field3 = cell3.transform.GetChild(0).GetComponent<InputField>();
-            field3.text = sequence[num3].ToString();
-            field3.interactable = false;
-        }
+        //print("R" + (i+1).ToString() + "C" + num3.ToString());
+        cell3 = GameObject.Find("R0C" + (num3).ToString());
+        image3 = cell3.GetComponent<Image>();
+        image3.color = new Color(0, 1, 0, 1);
+        field3 = cell3.transform.GetChild(0).GetComponent<InputField>();
+        field3.text = sequence[num3].ToString();
+        field3.interactable = false;
     }
 
     public void printBoard(){

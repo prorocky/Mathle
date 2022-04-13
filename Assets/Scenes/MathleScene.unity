@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 13991381}
   - component: {fileID: 13991380}
   m_Layer: 5
-  m_Name: InputField (1)
+  m_Name: InputField03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,13 +364,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 13991381}
   m_TextComponent: {fileID: 1060903468}
   m_Placeholder: {fileID: 1356431221}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 44432327}
   - component: {fileID: 44432326}
   m_Layer: 5
-  m_Name: InputField (2)
+  m_Name: InputField32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -652,13 +652,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 44432327}
   m_TextComponent: {fileID: 1447827634}
   m_Placeholder: {fileID: 1230101426}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 60139558}
   - component: {fileID: 60139557}
   m_Layer: 5
-  m_Name: R4C0
+  m_Name: R3C0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 68031319}
   - component: {fileID: 68031318}
   m_Layer: 5
-  m_Name: R1C0
+  m_Name: R0C0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 86478982}
   - component: {fileID: 86478981}
   m_Layer: 5
-  m_Name: R4C5
+  m_Name: R3C5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1189,7 +1189,7 @@ GameObject:
   - component: {fileID: 92982210}
   - component: {fileID: 92982209}
   m_Layer: 5
-  m_Name: R6C5
+  m_Name: R5C5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1423,7 +1423,7 @@ GameObject:
   - component: {fileID: 114327312}
   - component: {fileID: 114327311}
   m_Layer: 5
-  m_Name: R5C0
+  m_Name: R4C0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1658,7 +1658,7 @@ GameObject:
   - component: {fileID: 124423432}
   - component: {fileID: 124423431}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputField10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1728,13 +1728,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 124423432}
   m_TextComponent: {fileID: 756556538}
   m_Placeholder: {fileID: 100923029}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -1879,7 +1879,7 @@ GameObject:
   - component: {fileID: 166393904}
   - component: {fileID: 166393903}
   m_Layer: 5
-  m_Name: R4C2
+  m_Name: R3C2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1956,7 +1956,7 @@ GameObject:
   - component: {fileID: 197820156}
   - component: {fileID: 197820155}
   m_Layer: 5
-  m_Name: InputField (3)
+  m_Name: InputField33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2026,13 +2026,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 197820156}
   m_TextComponent: {fileID: 1410503487}
   m_Placeholder: {fileID: 10788774}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -2098,7 +2098,7 @@ GameObject:
   - component: {fileID: 246030419}
   - component: {fileID: 246030418}
   m_Layer: 5
-  m_Name: R2C2
+  m_Name: R1C2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2175,7 +2175,7 @@ GameObject:
   - component: {fileID: 250414817}
   - component: {fileID: 250414816}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputField00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2245,13 +2245,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 250414817}
   m_TextComponent: {fileID: 458450850}
   m_Placeholder: {fileID: 1277447235}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -2318,7 +2318,7 @@ GameObject:
   - component: {fileID: 275244788}
   - component: {fileID: 275244787}
   m_Layer: 5
-  m_Name: InputField (3)
+  m_Name: InputField53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2388,13 +2388,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 275244788}
   m_TextComponent: {fileID: 60303336}
   m_Placeholder: {fileID: 1808444484}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -2619,7 +2619,7 @@ GameObject:
   - component: {fileID: 354603267}
   - component: {fileID: 354603266}
   m_Layer: 5
-  m_Name: InputField (6)
+  m_Name: InputField46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2689,13 +2689,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 354603267}
   m_TextComponent: {fileID: 1725744022}
   m_Placeholder: {fileID: 1768269173}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -2759,7 +2759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 355180169}
   m_Layer: 5
-  m_Name: Row2
+  m_Name: Row1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2803,7 +2803,7 @@ GameObject:
   - component: {fileID: 368050692}
   - component: {fileID: 368050691}
   m_Layer: 5
-  m_Name: R5C3
+  m_Name: R4C3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2959,7 +2959,7 @@ GameObject:
   - component: {fileID: 387796429}
   - component: {fileID: 387796428}
   m_Layer: 5
-  m_Name: InputField (5)
+  m_Name: InputField45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3029,13 +3029,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 387796429}
   m_TextComponent: {fileID: 85240496}
   m_Placeholder: {fileID: 5970242}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -3102,7 +3102,7 @@ GameObject:
   - component: {fileID: 417276700}
   - component: {fileID: 417276699}
   m_Layer: 5
-  m_Name: InputField (2)
+  m_Name: InputField23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3172,13 +3172,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 417276700}
   m_TextComponent: {fileID: 947991707}
   m_Placeholder: {fileID: 1912650346}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -3323,7 +3323,7 @@ GameObject:
   - component: {fileID: 449659544}
   - component: {fileID: 449659543}
   m_Layer: 5
-  m_Name: R5C1
+  m_Name: R4C1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3558,7 +3558,7 @@ GameObject:
   - component: {fileID: 485616513}
   - component: {fileID: 485616512}
   m_Layer: 5
-  m_Name: InputField (5)
+  m_Name: InputField15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3628,13 +3628,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 485616513}
   m_TextComponent: {fileID: 1446702333}
   m_Placeholder: {fileID: 1925454544}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -3700,7 +3700,7 @@ GameObject:
   - component: {fileID: 492540491}
   - component: {fileID: 492540490}
   m_Layer: 5
-  m_Name: R6C0
+  m_Name: R5C0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3776,7 +3776,7 @@ GameObject:
   - component: {fileID: 504786876}
   - component: {fileID: 504786875}
   m_Layer: 5
-  m_Name: R1C5
+  m_Name: R0C5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3852,7 +3852,7 @@ GameObject:
   - component: {fileID: 511606767}
   - component: {fileID: 511606766}
   m_Layer: 5
-  m_Name: R3C1
+  m_Name: R2C1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3928,7 +3928,7 @@ GameObject:
   - component: {fileID: 517351261}
   - component: {fileID: 517351260}
   m_Layer: 5
-  m_Name: R3C4
+  m_Name: R2C4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4005,7 +4005,7 @@ GameObject:
   - component: {fileID: 520614603}
   - component: {fileID: 520614602}
   m_Layer: 5
-  m_Name: InputField (3)
+  m_Name: InputField05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4075,13 +4075,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 520614603}
   m_TextComponent: {fileID: 296524774}
   m_Placeholder: {fileID: 312944777}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -4227,7 +4227,7 @@ GameObject:
   - component: {fileID: 535319959}
   - component: {fileID: 535319958}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputField50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4297,13 +4297,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 535319959}
   m_TextComponent: {fileID: 1331530597}
   m_Placeholder: {fileID: 1331180820}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -4449,7 +4449,7 @@ GameObject:
   - component: {fileID: 560938381}
   - component: {fileID: 560938380}
   m_Layer: 5
-  m_Name: InputField (1)
+  m_Name: InputField31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4519,13 +4519,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 560938381}
   m_TextComponent: {fileID: 1988067872}
   m_Placeholder: {fileID: 951309067}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -4750,7 +4750,7 @@ GameObject:
   - component: {fileID: 695776721}
   - component: {fileID: 695776720}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputField21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4820,13 +4820,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 695776721}
   m_TextComponent: {fileID: 2126168462}
   m_Placeholder: {fileID: 1691193465}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -4892,7 +4892,7 @@ GameObject:
   - component: {fileID: 697956991}
   - component: {fileID: 697956990}
   m_Layer: 5
-  m_Name: R3C0
+  m_Name: R2C0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4969,7 +4969,7 @@ GameObject:
   - component: {fileID: 703470635}
   - component: {fileID: 703470634}
   m_Layer: 5
-  m_Name: InputField (2)
+  m_Name: InputField04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5039,13 +5039,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 703470635}
   m_TextComponent: {fileID: 110524396}
   m_Placeholder: {fileID: 1165748389}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -5191,7 +5191,7 @@ GameObject:
   - component: {fileID: 746334411}
   - component: {fileID: 746334410}
   m_Layer: 5
-  m_Name: InputField (3)
+  m_Name: InputField24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5261,13 +5261,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 746334411}
   m_TextComponent: {fileID: 979049364}
   m_Placeholder: {fileID: 1651328301}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -5413,7 +5413,7 @@ GameObject:
   - component: {fileID: 771524928}
   - component: {fileID: 771524927}
   m_Layer: 5
-  m_Name: InputField (5)
+  m_Name: InputField35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5483,13 +5483,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 771524928}
   m_TextComponent: {fileID: 741952515}
   m_Placeholder: {fileID: 583956635}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -5556,7 +5556,7 @@ GameObject:
   - component: {fileID: 783419347}
   - component: {fileID: 783419346}
   m_Layer: 5
-  m_Name: InputField (1)
+  m_Name: InputField22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5626,13 +5626,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 783419347}
   m_TextComponent: {fileID: 1869958005}
   m_Placeholder: {fileID: 2022969293}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -5856,7 +5856,7 @@ GameObject:
   - component: {fileID: 818511652}
   - component: {fileID: 818511651}
   m_Layer: 5
-  m_Name: R6C1
+  m_Name: R5C1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6011,7 +6011,7 @@ GameObject:
   - component: {fileID: 864863926}
   - component: {fileID: 864863925}
   m_Layer: 5
-  m_Name: R3C6
+  m_Name: R2C6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6324,7 +6324,7 @@ GameObject:
   - component: {fileID: 955420767}
   - component: {fileID: 955420766}
   m_Layer: 5
-  m_Name: R1C4
+  m_Name: R0C4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6602,7 +6602,7 @@ GameObject:
   - component: {fileID: 987242229}
   - component: {fileID: 987242228}
   m_Layer: 5
-  m_Name: InputField (5)
+  m_Name: InputField26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6672,13 +6672,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 987242229}
   m_TextComponent: {fileID: 1468421924}
   m_Placeholder: {fileID: 1698713910}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -6744,7 +6744,7 @@ GameObject:
   - component: {fileID: 990579069}
   - component: {fileID: 990579068}
   m_Layer: 5
-  m_Name: R6C6
+  m_Name: R5C6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6820,7 +6820,7 @@ GameObject:
   - component: {fileID: 994948910}
   - component: {fileID: 994948909}
   m_Layer: 5
-  m_Name: R6C3
+  m_Name: R5C3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6973,7 +6973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1010878254}
   m_Layer: 5
-  m_Name: Row5
+  m_Name: Row4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7017,7 +7017,7 @@ GameObject:
   - component: {fileID: 1012974766}
   - component: {fileID: 1012974765}
   m_Layer: 5
-  m_Name: R4C6
+  m_Name: R3C6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7249,7 +7249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054518491}
   m_Layer: 5
-  m_Name: Row1
+  m_Name: Row0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7449,7 +7449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1082818726}
   m_Layer: 5
-  m_Name: Row4
+  m_Name: Row3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7572,7 +7572,7 @@ GameObject:
   - component: {fileID: 1094773330}
   - component: {fileID: 1094773329}
   m_Layer: 5
-  m_Name: R1C3
+  m_Name: R0C3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7648,7 +7648,7 @@ GameObject:
   - component: {fileID: 1103097140}
   - component: {fileID: 1103097139}
   m_Layer: 5
-  m_Name: R2C6
+  m_Name: R1C6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7725,7 +7725,7 @@ GameObject:
   - component: {fileID: 1123537227}
   - component: {fileID: 1123537226}
   m_Layer: 5
-  m_Name: InputField (5)
+  m_Name: InputField55
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7795,13 +7795,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1123537227}
   m_TextComponent: {fileID: 656753429}
   m_Placeholder: {fileID: 1045057885}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -7867,7 +7867,7 @@ GameObject:
   - component: {fileID: 1156936361}
   - component: {fileID: 1156936360}
   m_Layer: 5
-  m_Name: R6C2
+  m_Name: R5C2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8023,7 +8023,7 @@ GameObject:
   - component: {fileID: 1193248620}
   - component: {fileID: 1193248619}
   m_Layer: 5
-  m_Name: InputField (6)
+  m_Name: InputField36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8093,13 +8093,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1193248620}
   m_TextComponent: {fileID: 39270722}
   m_Placeholder: {fileID: 1250641154}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -8244,7 +8244,7 @@ GameObject:
   - component: {fileID: 1220027897}
   - component: {fileID: 1220027896}
   m_Layer: 5
-  m_Name: R2C5
+  m_Name: R1C5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8557,7 +8557,7 @@ GameObject:
   - component: {fileID: 1252044926}
   - component: {fileID: 1252044925}
   m_Layer: 5
-  m_Name: R6C4
+  m_Name: R5C4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8634,7 +8634,7 @@ GameObject:
   - component: {fileID: 1262758685}
   - component: {fileID: 1262758684}
   m_Layer: 5
-  m_Name: InputField (2)
+  m_Name: InputField12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8704,13 +8704,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1262758685}
   m_TextComponent: {fileID: 371643345}
   m_Placeholder: {fileID: 2099186664}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -8855,7 +8855,7 @@ GameObject:
   - component: {fileID: 1278496461}
   - component: {fileID: 1278496460}
   m_Layer: 5
-  m_Name: R2C4
+  m_Name: R1C4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8931,7 +8931,7 @@ GameObject:
   - component: {fileID: 1305164993}
   - component: {fileID: 1305164992}
   m_Layer: 5
-  m_Name: R4C3
+  m_Name: R3C3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9086,7 +9086,7 @@ GameObject:
   - component: {fileID: 1308326963}
   - component: {fileID: 1308326962}
   m_Layer: 5
-  m_Name: R5C6
+  m_Name: R4C6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9321,7 +9321,7 @@ GameObject:
   - component: {fileID: 1340982122}
   - component: {fileID: 1340982121}
   m_Layer: 5
-  m_Name: InputField (4)
+  m_Name: InputField06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9391,13 +9391,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1340982122}
   m_TextComponent: {fileID: 1396343207}
   m_Placeholder: {fileID: 539614576}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -9543,7 +9543,7 @@ GameObject:
   - component: {fileID: 1357778575}
   - component: {fileID: 1357778574}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputField30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9613,13 +9613,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1357778575}
   m_TextComponent: {fileID: 968147931}
   m_Placeholder: {fileID: 464755201}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -9686,7 +9686,7 @@ GameObject:
   - component: {fileID: 1363295367}
   - component: {fileID: 1363295366}
   m_Layer: 5
-  m_Name: InputField (3)
+  m_Name: InputField13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9756,13 +9756,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1363295367}
   m_TextComponent: {fileID: 883394658}
   m_Placeholder: {fileID: 1708684674}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -9829,7 +9829,7 @@ GameObject:
   - component: {fileID: 1389256733}
   - component: {fileID: 1389256732}
   m_Layer: 5
-  m_Name: InputField (2)
+  m_Name: InputField42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9899,13 +9899,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1389256733}
   m_TextComponent: {fileID: 842474516}
   m_Placeholder: {fileID: 446967155}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -10050,7 +10050,7 @@ GameObject:
   - component: {fileID: 1397710655}
   - component: {fileID: 1397710654}
   m_Layer: 5
-  m_Name: R3C3
+  m_Name: R2C3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10127,7 +10127,7 @@ GameObject:
   - component: {fileID: 1405783909}
   - component: {fileID: 1405783908}
   m_Layer: 5
-  m_Name: InputField (6)
+  m_Name: InputField56
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10197,13 +10197,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1405783909}
   m_TextComponent: {fileID: 1194725775}
   m_Placeholder: {fileID: 1790769657}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -10775,7 +10775,7 @@ GameObject:
   - component: {fileID: 1494740089}
   - component: {fileID: 1494740088}
   m_Layer: 5
-  m_Name: InputField (1)
+  m_Name: InputField41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10845,13 +10845,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1494740089}
   m_TextComponent: {fileID: 789576376}
   m_Placeholder: {fileID: 1094284187}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -10994,7 +10994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1527238717}
   m_Layer: 5
-  m_Name: Row6
+  m_Name: Row5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11275,7 +11275,7 @@ GameObject:
   - component: {fileID: 1639218320}
   - component: {fileID: 1639218319}
   m_Layer: 5
-  m_Name: R4C1
+  m_Name: R3C1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11351,7 +11351,7 @@ GameObject:
   - component: {fileID: 1642424888}
   - component: {fileID: 1642424887}
   m_Layer: 5
-  m_Name: R3C2
+  m_Name: R2C2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11506,7 +11506,7 @@ GameObject:
   - component: {fileID: 1676181109}
   - component: {fileID: 1676181108}
   m_Layer: 5
-  m_Name: R3C5
+  m_Name: R2C5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11582,7 +11582,7 @@ GameObject:
   - component: {fileID: 1690338189}
   - component: {fileID: 1690338188}
   m_Layer: 5
-  m_Name: R5C2
+  m_Name: R4C2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11738,7 +11738,7 @@ GameObject:
   - component: {fileID: 1692052255}
   - component: {fileID: 1692052254}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputField20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11808,13 +11808,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1692052255}
   m_TextComponent: {fileID: 124048223}
   m_Placeholder: {fileID: 1595600093}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -12276,7 +12276,7 @@ GameObject:
   - component: {fileID: 1738036829}
   - component: {fileID: 1738036828}
   m_Layer: 5
-  m_Name: InputField (4)
+  m_Name: InputField44
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12346,13 +12346,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1738036829}
   m_TextComponent: {fileID: 1596008554}
   m_Placeholder: {fileID: 1937832597}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -12419,7 +12419,7 @@ GameObject:
   - component: {fileID: 1762777559}
   - component: {fileID: 1762777558}
   m_Layer: 5
-  m_Name: InputField (2)
+  m_Name: InputField52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12489,13 +12489,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1762777559}
   m_TextComponent: {fileID: 138932589}
   m_Placeholder: {fileID: 1729657854}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -12561,7 +12561,7 @@ GameObject:
   - component: {fileID: 1764185698}
   - component: {fileID: 1764185697}
   m_Layer: 5
-  m_Name: R4C4
+  m_Name: R3C4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12637,7 +12637,7 @@ GameObject:
   - component: {fileID: 1767876536}
   - component: {fileID: 1767876535}
   m_Layer: 5
-  m_Name: R1C2
+  m_Name: R0C2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12951,7 +12951,7 @@ GameObject:
   - component: {fileID: 1784876791}
   - component: {fileID: 1784876790}
   m_Layer: 5
-  m_Name: InputField (4)
+  m_Name: InputField14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13021,13 +13021,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1784876791}
   m_TextComponent: {fileID: 1506894458}
   m_Placeholder: {fileID: 1002199316}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -13173,7 +13173,7 @@ GameObject:
   - component: {fileID: 1790771193}
   - component: {fileID: 1790771192}
   m_Layer: 5
-  m_Name: InputField (3)
+  m_Name: InputField43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13243,13 +13243,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1790771193}
   m_TextComponent: {fileID: 1767960794}
   m_Placeholder: {fileID: 524520254}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -13394,7 +13394,7 @@ GameObject:
   - component: {fileID: 1812668121}
   - component: {fileID: 1812668120}
   m_Layer: 5
-  m_Name: R5C5
+  m_Name: R4C5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13470,7 +13470,7 @@ GameObject:
   - component: {fileID: 1834151557}
   - component: {fileID: 1834151556}
   m_Layer: 5
-  m_Name: R5C4
+  m_Name: R4C4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13547,7 +13547,7 @@ GameObject:
   - component: {fileID: 1834174219}
   - component: {fileID: 1834174218}
   m_Layer: 5
-  m_Name: InputField (4)
+  m_Name: InputField25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13617,13 +13617,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1834174219}
   m_TextComponent: {fileID: 1308082221}
   m_Placeholder: {fileID: 2072499315}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -13690,7 +13690,7 @@ GameObject:
   - component: {fileID: 1841709015}
   - component: {fileID: 1841709014}
   m_Layer: 5
-  m_Name: InputField (1)
+  m_Name: InputField51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13760,13 +13760,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1841709015}
   m_TextComponent: {fileID: 1065630520}
   m_Placeholder: {fileID: 1407395670}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -13912,7 +13912,7 @@ GameObject:
   - component: {fileID: 1882747114}
   - component: {fileID: 1882747113}
   m_Layer: 5
-  m_Name: InputField (1)
+  m_Name: InputField11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13982,13 +13982,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1882747114}
   m_TextComponent: {fileID: 1044299569}
   m_Placeholder: {fileID: 1580638235}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -14160,7 +14160,7 @@ GameObject:
   - component: {fileID: 1888355770}
   - component: {fileID: 1888355769}
   m_Layer: 5
-  m_Name: InputField (4)
+  m_Name: InputField54
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14230,13 +14230,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1888355770}
   m_TextComponent: {fileID: 1958284273}
   m_Placeholder: {fileID: 2121933818}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -14381,7 +14381,7 @@ GameObject:
   - component: {fileID: 1921931181}
   - component: {fileID: 1921931180}
   m_Layer: 5
-  m_Name: R1C1
+  m_Name: R0C1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14536,7 +14536,7 @@ GameObject:
   - component: {fileID: 1926783318}
   - component: {fileID: 1926783317}
   m_Layer: 5
-  m_Name: R1C6
+  m_Name: R0C6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14692,7 +14692,7 @@ GameObject:
   - component: {fileID: 1955064768}
   - component: {fileID: 1955064767}
   m_Layer: 5
-  m_Name: InputField (6)
+  m_Name: InputField16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14762,13 +14762,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1955064768}
   m_TextComponent: {fileID: 1228689605}
   m_Placeholder: {fileID: 2044890606}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -14914,7 +14914,7 @@ GameObject:
   - component: {fileID: 1962659314}
   - component: {fileID: 1962659313}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputField01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14984,13 +14984,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1962659314}
   m_TextComponent: {fileID: 1473611923}
   m_Placeholder: {fileID: 2102196369}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -15057,7 +15057,7 @@ GameObject:
   - component: {fileID: 1964168719}
   - component: {fileID: 1964168718}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputField40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15127,13 +15127,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1964168719}
   m_TextComponent: {fileID: 62389927}
   m_Placeholder: {fileID: 121081667}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -15199,7 +15199,7 @@ GameObject:
   - component: {fileID: 1968273331}
   - component: {fileID: 1968273330}
   m_Layer: 5
-  m_Name: R2C3
+  m_Name: R1C3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15354,7 +15354,7 @@ GameObject:
   - component: {fileID: 1998752775}
   - component: {fileID: 1998752774}
   m_Layer: 5
-  m_Name: R2C1
+  m_Name: R1C1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15507,7 +15507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2016177776}
   m_Layer: 5
-  m_Name: Row3
+  m_Name: Row2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15793,7 +15793,7 @@ GameObject:
   - component: {fileID: 2061361312}
   - component: {fileID: 2061361311}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputField02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15863,13 +15863,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2061361312}
   m_TextComponent: {fileID: 1702870577}
   m_Placeholder: {fileID: 803416144}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -15936,7 +15936,7 @@ GameObject:
   - component: {fileID: 2069708980}
   - component: {fileID: 2069708979}
   m_Layer: 5
-  m_Name: InputField (4)
+  m_Name: InputField34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16006,13 +16006,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2069708980}
   m_TextComponent: {fileID: 1776502915}
   m_Placeholder: {fileID: 2011373617}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
@@ -16078,7 +16078,7 @@ GameObject:
   - component: {fileID: 2072271965}
   - component: {fileID: 2072271964}
   m_Layer: 5
-  m_Name: R2C0
+  m_Name: R1C0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
