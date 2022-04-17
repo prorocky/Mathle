@@ -178,21 +178,24 @@ public class Base_Mathle : MonoBehaviour
             // do flip animation?
 
             // change color to green
-            image1.color = Color.green;
+            image1.color = Color.black;
+            field1.image.color = Color.green;
             field1.text = sequence[col].ToString();
 
         } else if (intBoard[row,col] < sequence[col]) {
             // do flip animation?
 
             // change color to red
-            image1.color = Color.red;
+            image1.color = Color.black;
+            field1.image.color = Color.red;
             field1.text = intBoard[row,col].ToString();
 
         } else {
             // do flip animation?
 
             // change color to blue
-            image1.color = Color.blue;
+            image1.color = Color.black;
+            field1.image.color = Color.blue;
             field1.text = intBoard[row,col].ToString();
 
         }
@@ -327,12 +330,21 @@ public class Base_Mathle : MonoBehaviour
             GameObject thisCell = GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString());
             GameObject prevCell = GameObject.Find("R" + (currentRow - 1).ToString() + "C" + (i).ToString());
 
-            if (prevCell.GetComponent<Image>().color == Color.green) {
-                thisCell.GetComponent<Image>().color = prevCell.GetComponent<Image>().color;
+            // if (prevCell.GetComponent<Image>().color == Color.green) {
+            //     thisCell.GetComponent<Image>().color = prevCell.GetComponent<Image>().color;
+            //     thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
+            // } else {
+            //     thisCell.GetComponentInChildren<InputField>().interactable = true;
+            // }
+
+            if (prevCell.GetComponentInChildren<InputField>().image.color == Color.green) {
+                thisCell.GetComponentInChildren<InputField>().image.color = prevCell.GetComponentInChildren<InputField>().image.color;
                 thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
             } else {
                 thisCell.GetComponentInChildren<InputField>().interactable = true;
             }
+
+
         }
     }
 
@@ -362,9 +374,10 @@ public class Base_Mathle : MonoBehaviour
         //print("R" + (i+1).ToString() + "C" + num1.ToString());
         cell1 = GameObject.Find("R0C" + (num1).ToString());
         image1 = cell1.GetComponent<Image>();
-        image1.color = new Color(0, 1, 0, 1);
+        image1.color = new Color(0, 0, 0, 0);
         field1 = cell1.transform.GetChild(0).GetComponent<InputField>();
         field1.text = sequence[num1].ToString();
+        field1.image.color = new Color (0, 1, 0, 1);
         field1.interactable = false;
 
 
@@ -373,9 +386,10 @@ public class Base_Mathle : MonoBehaviour
         //print("R" + (i+1).ToString() + "C" + num2.ToString());
         cell2 = GameObject.Find("R0C" + (num2).ToString());
         image2 = cell2.GetComponent<Image>();
-        image2.color = new Color(0, 1, 0, 1);
+        image2.color = new Color(0, 0, 0, 0);
         field2 = cell2.transform.GetChild(0).GetComponent<InputField>();
         field2.text = sequence[num2].ToString();
+        field2.image.color = new Color (0, 1, 0, 1);
         field2.interactable = false;
 
         intBoard[0,num3] = sequence[num3];
@@ -383,9 +397,10 @@ public class Base_Mathle : MonoBehaviour
         //print("R" + (i+1).ToString() + "C" + num3.ToString());
         cell3 = GameObject.Find("R0C" + (num3).ToString());
         image3 = cell3.GetComponent<Image>();
-        image3.color = new Color(0, 1, 0, 1);
+        image3.color = new Color(0, 0, 0, 0);
         field3 = cell3.transform.GetChild(0).GetComponent<InputField>();
         field3.text = sequence[num3].ToString();
+        field3.image.color = new Color (0, 1, 0, 1);
         field3.interactable = false;
     }
 
