@@ -9,26 +9,32 @@ public class Base_Mathle : MonoBehaviour
 {
 
     // Num array with solutions
-    int [] sequence = new int[7];
+    public int [] sequence = new int[7];
 
     // Array for keeping track of most complete answer
-    int [] playerSequence = new int[7];
+    public int [] playerSequence = new int[7];
 
     // Array for the board
-    int [,] board = new int[6,7];
+    int [,] intBoard = new int[6,7];
+
+    [SerializeField]
+    public GameObject [] Row0, Row1, Row2, Row3, Row4, Row5;
+    public GameObject[][] BOARD = new GameObject[6][];
+    
 
     private GameObject cell1, cell2, cell3;
     private Image image1, image2, image3;
     private InputField field1, field2, field3;
     private string opStr1, opStr2;
-    private int currentRow = 0;     // keep track of what row player is on
+    public int currentRow = 0;     // keep track of what row player is on
     EventSystem system;
-
+    public Button checkSol;
 
     // Start is called before the first frame update
     void Start()
     {
         system = EventSystem.current;
+        checkSol.onClick.AddListener(checkSolPressed);
         // 0 add, 1 sub, 2 mult
         // sequence op num2 op num3
         int op1 = Random.Range(0,3);
@@ -61,11 +67,10 @@ public class Base_Mathle : MonoBehaviour
         printBoard();
         printSequence();
 
-        string str = "";
-        for(int j = 0; j < 7; j++){
-            str += playerSequence[j] + " ";
-        }
-        Debug.Log(str);
+        // fillBoard();
+        // print(BOARD[0][0]);
+
+        
     }
 
     // Update is called once per frame
@@ -73,30 +78,94 @@ public class Base_Mathle : MonoBehaviour
     {
         
     }
-    public void testCell() {
-        GameObject row1 = GameObject.Find("Row" + (1).ToString());
+    public enum SolutionCode : int
+        {
+            Invalid = 0,    // not all cells are filled
+            Continue = 1,   // incorrect answer, not last row
+            WinGame = 2,    // correct answer
+            LoseGame = 3    // on last row, incorrect answer
+        };
+    void checkSolPressed() {
 
-        
+        // store text information into array
+        for (int i = 0; i < sequence.Length; i++) {
+            // print(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text);
+            //print(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text == "");
+            intBoard[currentRow, i] = (GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text != "") ? System.Int32.Parse(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text) : 0;
+        }
+
+
+
+
+        switch (checkSolution()) {
+            case SolutionCode.Invalid:
+                print("row is not fully filled");
+                // play noise?
+                // animation?
+                // popup?
+                break;
+            case SolutionCode.Continue:
+            print("continuing game");
+                checkRow();
+                nextRow();
+                break;
+            case SolutionCode.WinGame:
+                checkRow();
+                break;
+            case SolutionCode.LoseGame:
+                checkRow();
+            print("you lose");
+                break;
+        }
     }
 
-    public enum SolutionCode : int
-    {
-        GameOver = 1,
-        Continue = 2
-    };
+   
     public SolutionCode checkSolution() {
 
-        if (Enumerable.SequenceEqual(sequence, playerSequence)) {
-            // function / code to end game here
-            return SolutionCode.GameOver;
+        if (!rowFilled()) {
+            return SolutionCode.Invalid;
         }
 
-        // check current sequence and solution one by one
-        for (int i = 0; i < 7; i++) {
-            isNumCorrect(currentRow, i);
+        int [] currentSequence = new int[sequence.Length];
+        for (int i = 0; i < sequence.Length; i++) {
+            currentSequence[i] = intBoard[currentRow, i];
         }
+        if (Enumerable.SequenceEqual(sequence, currentSequence)) {
+            return SolutionCode.WinGame;
+        }
+
+        if (currentRow == 6) {
+            return SolutionCode.LoseGame;
+        }
+
         return SolutionCode.Continue;
 
+    }
+
+    // function to check whether every cell in a row has text in it
+    bool rowFilled() {
+        for (int i = 0; i < sequence.Length; i++) {
+            if (intBoard[currentRow, i] == 0 && GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text != "0") {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void checkRow() {
+        for (int i = 0; i < sequence.Length; i++) {
+            StartCoroutine(isNumCorrect(currentRow, i));
+        }
+
+    }
+
+    void nextRow() {
+        currentRow++;
+        fillRow();        
+    }
+
+    bool isCorrect(int col) {
+        return GameObject.Find("R" + (currentRow).ToString() + "C" + (col).ToString()).GetComponentInChildren<InputField>().text == sequence[col].ToString();
     }
 
     IEnumerator isNumCorrect(int row, int col) {
@@ -105,30 +174,57 @@ public class Base_Mathle : MonoBehaviour
         field1 = thisCell.transform.GetChild(0).GetComponent<InputField>();
 
         // if number is correct, make green and store into player sequence object
-        if (board[row,col] == sequence[col]) {
+        if (intBoard[row,col] == sequence[col]) {
             // do flip animation?
 
             // change color to green
-            image1.color = new Color(0, 1, 0, 1);
+            image1.color = Color.green;
             field1.text = sequence[col].ToString();
 
-        } else if (board[row,col] < sequence[col]) {
+        } else if (intBoard[row,col] < sequence[col]) {
             // do flip animation?
 
             // change color to red
             image1.color = Color.red;
-            field1.text = board[row,col].ToString();
+            field1.text = intBoard[row,col].ToString();
 
         } else {
             // do flip animation?
 
             // change color to blue
             image1.color = Color.blue;
-            field1.text = board[row,col].ToString();
+            field1.text = intBoard[row,col].ToString();
 
         }
         field1.interactable = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.2f);
+    }
+
+    public void fillBoard() {
+        for (int i = 0; i < sequence.Length; i++) {
+            for (int j = 0; j < 6; j++) {
+                switch(i) {
+                    case 0:
+                        BOARD[i][j] = Row0[j];
+                        break;
+                    case 1:
+                        BOARD[i][j] = Row1[j];
+                        break;
+                    case 2:
+                        BOARD[i][j] = Row2[j];
+                        break;
+                    case 3:
+                        BOARD[i][j] = Row3[j];
+                        break;
+                    case 4:
+                        BOARD[i][j] = Row4[j];
+                        break;
+                    case 5:
+                        BOARD[i][j] = Row5[j];
+                        break;
+                }
+            }
+        }
     }
 
     public void getSolution(int op1, int op2, int num1, int num2, int num3){
@@ -165,17 +261,17 @@ public class Base_Mathle : MonoBehaviour
             case 0:
                 switch(op2) {
                     case 0:
-                        for (int i = 1; i < 7; i++) {
+                        for (int i = 1; i < sequence.Length; i++) {
                             sequence[i] = (sequence[i-1] + num2) + num3;
                         }
                         break;
                     case 1:
-                        for (int i = 1; i < 7; i++) {
+                        for (int i = 1; i < sequence.Length; i++) {
                             sequence[i] = (sequence[i-1] + num2) - num3;
                         }
                         break;
                     case 2:
-                        for (int i = 1; i < 7; i++) {
+                        for (int i = 1; i < sequence.Length; i++) {
                             sequence[i] = (sequence[i-1] + num2) * num3;
                         }
                         break;
@@ -185,17 +281,17 @@ public class Base_Mathle : MonoBehaviour
             case 1:
                 switch(op2) {
                     case 0:
-                        for (int i = 1; i < 7; i++) {
+                        for (int i = 1; i < sequence.Length; i++) {
                             sequence[i] = (sequence[i-1] - num2) + num3;
                         }
                         break;
                     case 1:
-                        for (int i = 1; i < 7; i++) {
+                        for (int i = 1; i < sequence.Length; i++) {
                             sequence[i] = (sequence[i-1] - num2) - num3;
                         }
                         break;
                     case 2:
-                        for (int i = 1; i < 7; i++) {
+                        for (int i = 1; i < sequence.Length; i++) {
                             sequence[i] = (sequence[i-1] - num2) * num3;
                         }
                         break;
@@ -205,17 +301,17 @@ public class Base_Mathle : MonoBehaviour
             case 2:
                 switch(op2) {
                     case 0:
-                        for (int i = 1; i < 7; i++) {
+                        for (int i = 1; i < sequence.Length; i++) {
                             sequence[i] = (sequence[i-1] * num2) + num3;
                         }
                         break;
                     case 1:
-                        for (int i = 1; i < 7; i++) {
+                        for (int i = 1; i < sequence.Length; i++) {
                             sequence[i] = (sequence[i-1] * num2) - num3;
                         }
                         break;
                     case 2:
-                        for (int i = 1; i < 7; i++) {
+                        for (int i = 1; i < sequence.Length; i++) {
                             sequence[i] = (sequence[i-1] * num2) * num3;
                         }
                         break;
@@ -227,29 +323,30 @@ public class Base_Mathle : MonoBehaviour
     }
 
     public void fillRow() {
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < sequence.Length; i++) {
             GameObject thisCell = GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString());
             GameObject prevCell = GameObject.Find("R" + (currentRow - 1).ToString() + "C" + (i).ToString());
 
-            thisCell.GetComponent<Image>().color = prevCell.GetComponent<Image>().color;
-            thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
-            if (thisCell.GetComponent<Image>().color != Color.green) {
+            if (prevCell.GetComponent<Image>().color == Color.green) {
+                thisCell.GetComponent<Image>().color = prevCell.GetComponent<Image>().color;
+                thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
+            } else {
                 thisCell.GetComponentInChildren<InputField>().interactable = true;
             }
         }
     }
 
     public void fillFirstRow(){
-        int num1 = Random.Range(0,7);
-        int num2 = Random.Range(0,7);
+        int num1 = Random.Range(0,sequence.Length);
+        int num2 = Random.Range(0,sequence.Length);
 
         while(num2 == num1){
-            num2 = Random.Range(0,7);
+            num2 = Random.Range(0,sequence.Length);
         }
 
-        int num3 = Random.Range(0,7);
+        int num3 = Random.Range(0,sequence.Length);
         while(num3 == num1 || num3 == num2){
-            num3 = Random.Range(0,7);
+            num3 = Random.Range(0,sequence.Length);
         }
 
         playerSequence[num1] = sequence[num1];
@@ -260,7 +357,7 @@ public class Base_Mathle : MonoBehaviour
 
 
         // changed to only first row
-        board[0,num1] = sequence[num1];
+        intBoard[0,num1] = sequence[num1];
 
         //print("R" + (i+1).ToString() + "C" + num1.ToString());
         cell1 = GameObject.Find("R0C" + (num1).ToString());
@@ -271,7 +368,7 @@ public class Base_Mathle : MonoBehaviour
         field1.interactable = false;
 
 
-        board[0,num2] = sequence[num2];
+        intBoard[0,num2] = sequence[num2];
 
         //print("R" + (i+1).ToString() + "C" + num2.ToString());
         cell2 = GameObject.Find("R0C" + (num2).ToString());
@@ -281,7 +378,7 @@ public class Base_Mathle : MonoBehaviour
         field2.text = sequence[num2].ToString();
         field2.interactable = false;
 
-        board[0,num3] = sequence[num3];
+        intBoard[0,num3] = sequence[num3];
 
         //print("R" + (i+1).ToString() + "C" + num3.ToString());
         cell3 = GameObject.Find("R0C" + (num3).ToString());
@@ -296,8 +393,8 @@ public class Base_Mathle : MonoBehaviour
     
         for(int i = 0; i < 6; i++){
             string str = "";
-            for(int j = 0; j < 7; j++){
-                str += board[i,j] + " ";
+            for(int j = 0; j < sequence.Length; j++){
+                str += intBoard[i,j] + " ";
             }
             Debug.Log(str);
         }
@@ -305,7 +402,7 @@ public class Base_Mathle : MonoBehaviour
 
     public void printSequence(){
         string str = "";
-        for(int j = 0; j < 7; j++){
+        for(int j = 0; j < sequence.Length; j++){
             str += sequence[j] + " ";
         }
         Debug.Log(str);
