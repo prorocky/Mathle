@@ -30,9 +30,20 @@ public class Base_Mathle : MonoBehaviour
     EventSystem system;
     public Button checkSol;
 
+    //Error Message
+    public Color targetColor = new Color(1, 1, 1, 0);
+    public Image ImageToFade;
+
+    //Animations
+    private GameObject Col0, Col1, Col2, Col3, Col4, Col5, Col6;
+    private Animator col0, col1, col2, col3, col4, col5, col6;
+
     // Start is called before the first frame update
     void Start()
     {
+        
+        
+
         system = EventSystem.current;
         checkSol.onClick.AddListener(checkSolPressed);
         
@@ -114,6 +125,11 @@ public class Base_Mathle : MonoBehaviour
         switch (checkSolution()) {
             case SolutionCode.Invalid:
                 print("row is not fully filled");
+                //Error Message
+                ImageToFade.color = new Color(1, 1, 1, 1);
+                PlayAnimation();
+                StartCoroutine(LerpFunction(targetColor, 1.5f));
+
                 // play noise?
                 // animation?
                 // popup?
@@ -133,7 +149,64 @@ public class Base_Mathle : MonoBehaviour
         }
     }
 
-   
+    void PlayAnimation(){
+        Col0 = GameObject.Find("R" + (currentRow).ToString() + "C0");
+        Col1 = GameObject.Find("R" + (currentRow).ToString() + "C1");
+        Col2 = GameObject.Find("R" + (currentRow).ToString() + "C2");
+        Col3 = GameObject.Find("R" + (currentRow).ToString() + "C3");
+        Col4 = GameObject.Find("R" + (currentRow).ToString() + "C4");
+        Col5 = GameObject.Find("R" + (currentRow).ToString() + "C5");
+        Col6 = GameObject.Find("R" + (currentRow).ToString() + "C6");
+
+        col0 = Col0.GetComponent<Animator>();
+        col0.SetBool("Error", true);
+        col0.Play("CellShake");
+
+        col1 = Col1.GetComponent<Animator>();
+        col1.SetBool("Error", true);
+        col1.Play("CellShake");
+
+        col2 = Col2.GetComponent<Animator>();
+        col2.SetBool("Error", true);
+        col2.Play("CellShake");
+
+        col3 = Col3.GetComponent<Animator>();
+        col3.SetBool("Error", true);
+        col3.Play("CellShake");
+
+        col4 = Col4.GetComponent<Animator>();
+        col4.SetBool("Error", true);
+        col4.Play("CellShake");
+
+        col5 = Col5.GetComponent<Animator>();
+        col5.SetBool("Error", true);
+        col5.Play("CellShake");
+
+        col6 = Col6.GetComponent<Animator>();
+        col6.SetBool("Error", true);
+        col6.Play("CellShake");
+
+
+        StartCoroutine(Wait(col0));
+        StartCoroutine(Wait(col1));
+        StartCoroutine(Wait(col2));
+        StartCoroutine(Wait(col3));
+        StartCoroutine(Wait(col4));
+        StartCoroutine(Wait(col5));
+        StartCoroutine(Wait(col6));
+
+        
+        
+        
+
+    }
+
+   IEnumerator Wait(Animator col)
+   {
+       yield return new WaitForSeconds(.5f);
+       col.SetBool("Error", false);
+   }
+
     public SolutionCode checkSolution() {
 
         if (!rowFilled()) {
@@ -382,5 +455,19 @@ public class Base_Mathle : MonoBehaviour
             str += sequence[j] + " ";
         }
         Debug.Log(str);
+    }
+
+    //Error Message Lerp
+    IEnumerator LerpFunction(Color endValue, float duration)
+    {
+        float time = 0;
+        Color startValue = ImageToFade.color;
+        while (time < duration)
+        {
+            ImageToFade.color = Color.Lerp(startValue, endValue, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        ImageToFade.color = endValue;
     }
 }
