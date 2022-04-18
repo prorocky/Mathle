@@ -35,8 +35,8 @@ public class Base_Mathle : MonoBehaviour
     public Image ImageToFade;
 
     //Animations
-    private GameObject Col0, Col1, Col2, Col3, Col4, Col5, Col6;
-    private Animator col0, col1, col2, col3, col4, col5, col6;
+    private GameObject Col0, Col1, Col2, Col3, Col4, Col5;
+    private Animator col0, col1, col2, col3, col4, col5;
 
     // Start is called before the first frame update
     void Start()
@@ -156,7 +156,7 @@ public class Base_Mathle : MonoBehaviour
         Col3 = GameObject.Find("R" + (currentRow).ToString() + "C3");
         Col4 = GameObject.Find("R" + (currentRow).ToString() + "C4");
         Col5 = GameObject.Find("R" + (currentRow).ToString() + "C5");
-        Col6 = GameObject.Find("R" + (currentRow).ToString() + "C6");
+        //Col6 = GameObject.Find("R" + (currentRow).ToString() + "C6");
 
         col0 = Col0.GetComponent<Animator>();
         col0.SetBool("Error", true);
@@ -182,9 +182,9 @@ public class Base_Mathle : MonoBehaviour
         col5.SetBool("Error", true);
         col5.Play("CellShake");
 
-        col6 = Col6.GetComponent<Animator>();
-        col6.SetBool("Error", true);
-        col6.Play("CellShake");
+        //col6 = Col6.GetComponent<Animator>();
+        //col6.SetBool("Error", true);
+        //col6.Play("CellShake");
 
 
         StartCoroutine(Wait(col0));
@@ -193,7 +193,7 @@ public class Base_Mathle : MonoBehaviour
         StartCoroutine(Wait(col3));
         StartCoroutine(Wait(col4));
         StartCoroutine(Wait(col5));
-        StartCoroutine(Wait(col6));
+        //StartCoroutine(Wait(col6));
 
         
         
