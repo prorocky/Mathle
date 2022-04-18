@@ -1724,7 +1724,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 124423432}
   m_TextComponent: {fileID: 756556538}
   m_Placeholder: {fileID: 100923029}
@@ -2956,7 +2956,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 387796429}
   m_TextComponent: {fileID: 85240496}
   m_Placeholder: {fileID: 5970242}
@@ -3099,7 +3099,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 417276700}
   m_TextComponent: {fileID: 947991707}
   m_Placeholder: {fileID: 1912650346}
@@ -3555,7 +3555,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 485616513}
   m_TextComponent: {fileID: 1446702333}
   m_Placeholder: {fileID: 1925454544}
@@ -4224,7 +4224,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 535319959}
   m_TextComponent: {fileID: 1331530597}
   m_Placeholder: {fileID: 1331180820}
@@ -4747,7 +4747,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 695776721}
   m_TextComponent: {fileID: 2126168462}
   m_Placeholder: {fileID: 1691193465}
@@ -5188,7 +5188,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 746334411}
   m_TextComponent: {fileID: 979049364}
   m_Placeholder: {fileID: 1651328301}
@@ -5410,7 +5410,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 771524928}
   m_TextComponent: {fileID: 741952515}
   m_Placeholder: {fileID: 583956635}
@@ -5553,7 +5553,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 783419347}
   m_TextComponent: {fileID: 1869958005}
   m_Placeholder: {fileID: 2022969293}
@@ -7318,7 +7318,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1123537227}
   m_TextComponent: {fileID: 656753429}
   m_Placeholder: {fileID: 1045057885}
@@ -7980,7 +7980,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1262758685}
   m_TextComponent: {fileID: 371643345}
   m_Placeholder: {fileID: 2099186664}
@@ -8670,7 +8670,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1357778575}
   m_TextComponent: {fileID: 968147931}
   m_Placeholder: {fileID: 464755201}
@@ -8813,7 +8813,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1363295367}
   m_TextComponent: {fileID: 883394658}
   m_Placeholder: {fileID: 1708684674}
@@ -10563,7 +10563,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1692052255}
   m_TextComponent: {fileID: 124048223}
   m_Placeholder: {fileID: 1595600093}
@@ -11616,7 +11616,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1784876791}
   m_TextComponent: {fileID: 1506894458}
   m_Placeholder: {fileID: 1002199316}
@@ -12133,7 +12133,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1834174219}
   m_TextComponent: {fileID: 1308082221}
   m_Placeholder: {fileID: 2072499315}
@@ -12498,7 +12498,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1882747114}
   m_TextComponent: {fileID: 1044299569}
   m_Placeholder: {fileID: 1580638235}
@@ -13426,7 +13426,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1964168719}
   m_TextComponent: {fileID: 62389927}
   m_Placeholder: {fileID: 121081667}
