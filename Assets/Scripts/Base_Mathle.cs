@@ -9,13 +9,13 @@ public class Base_Mathle : MonoBehaviour
 {
 
     // Num array with solutions
-    public int [] sequence = new int[7];
+    public int [] sequence = new int[6];
 
     // Array for keeping track of most complete answer
-    public int [] playerSequence = new int[7];
+    public int [] playerSequence = new int[6];
 
     // Array for the board
-    int [,] intBoard = new int[6,7];
+    int [,] intBoard = new int[6,6];
 
     [SerializeField]
     public GameObject [] Row0, Row1, Row2, Row3, Row4, Row5;
@@ -35,10 +35,39 @@ public class Base_Mathle : MonoBehaviour
     {
         system = EventSystem.current;
         checkSol.onClick.AddListener(checkSolPressed);
+        
+        createSequence();
+        while (sequence[0] == sequence[1]) {
+            createSequence();
+        }
+
+        print("Sequence.length = " + sequence.Length);
+
+        fillFirstRow();
+        printBoard();
+        printSequence();
+
+        // fillBoard();
+        // print(BOARD[0][0]);
+
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void createSequence() {
         // 0 add, 1 sub, 2 mult
         // sequence op num2 op num3
         int op1 = Random.Range(0,3);
         int op2 = Random.Range(0,3);
+
+        if (op1 == 2 && op2 == 2) {
+            op1 = Random.Range(0,2);
+        }
 
         int num1 = Random.Range(0,10);
         int num2, num3;
@@ -62,21 +91,6 @@ public class Base_Mathle : MonoBehaviour
         }
 
         getSolution(op1,op2,num1,num2,num3);
-
-        fillFirstRow();
-        printBoard();
-        printSequence();
-
-        // fillBoard();
-        // print(BOARD[0][0]);
-
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     public enum SolutionCode : int
         {
@@ -259,69 +273,33 @@ public class Base_Mathle : MonoBehaviour
 
         Debug.Log("formula: "+ "num" + " " + opStr1 + " " + num2 + " " +  opStr2 + " " +  num3);
 
+        for (int i = 1; i < sequence.Length; i++) {
 
-        switch(op1) {
-            case 0:
-                switch(op2) {
-                    case 0:
-                        for (int i = 1; i < sequence.Length; i++) {
-                            sequence[i] = (sequence[i-1] + num2) + num3;
-                        }
-                        break;
-                    case 1:
-                        for (int i = 1; i < sequence.Length; i++) {
-                            sequence[i] = (sequence[i-1] + num2) - num3;
-                        }
-                        break;
-                    case 2:
-                        for (int i = 1; i < sequence.Length; i++) {
-                            sequence[i] = (sequence[i-1] + num2) * num3;
-                        }
-                        break;
-                }
-            break;
+            switch(op1) {
+                case 0:
+                    sequence[i] = sequence[i-1] + num2;
+                    break;
+                case 1:
+                    sequence[i] = sequence[i-1] - num2;
+                    break;
+                case 2:
+                    sequence[i] = sequence[i-1] * num2;
+                    break;
+            }
 
-            case 1:
-                switch(op2) {
-                    case 0:
-                        for (int i = 1; i < sequence.Length; i++) {
-                            sequence[i] = (sequence[i-1] - num2) + num3;
-                        }
-                        break;
-                    case 1:
-                        for (int i = 1; i < sequence.Length; i++) {
-                            sequence[i] = (sequence[i-1] - num2) - num3;
-                        }
-                        break;
-                    case 2:
-                        for (int i = 1; i < sequence.Length; i++) {
-                            sequence[i] = (sequence[i-1] - num2) * num3;
-                        }
-                        break;
-                }
-            break;
+            switch(op2) {
+                case 0:
+                    sequence[i] = sequence[i] + num3;
+                    break;
+                case 1:
+                    sequence[i] = sequence[i] - num3;
+                    break;
+                case 2:
+                    sequence[i] = sequence[i] * num3;
+                    break;
+            }
 
-            case 2:
-                switch(op2) {
-                    case 0:
-                        for (int i = 1; i < sequence.Length; i++) {
-                            sequence[i] = (sequence[i-1] * num2) + num3;
-                        }
-                        break;
-                    case 1:
-                        for (int i = 1; i < sequence.Length; i++) {
-                            sequence[i] = (sequence[i-1] * num2) - num3;
-                        }
-                        break;
-                    case 2:
-                        for (int i = 1; i < sequence.Length; i++) {
-                            sequence[i] = (sequence[i-1] * num2) * num3;
-                        }
-                        break;
-                }
-            break;
         }
-
         return;
     }
 
@@ -356,16 +334,10 @@ public class Base_Mathle : MonoBehaviour
             num2 = Random.Range(0,sequence.Length);
         }
 
-        int num3 = Random.Range(0,sequence.Length);
-        while(num3 == num1 || num3 == num2){
-            num3 = Random.Range(0,sequence.Length);
-        }
-
         playerSequence[num1] = sequence[num1];
         playerSequence[num2] = sequence[num2];
-        playerSequence[num3] = sequence[num3];
 
-        print(num1 + ", " + num2 + ", " + num3);
+        print(num1 + ", " + num2);
 
 
         // changed to only first row
@@ -391,24 +363,13 @@ public class Base_Mathle : MonoBehaviour
         field2.text = sequence[num2].ToString();
         field2.image.color = new Color (0, 1, 0, 1);
         field2.interactable = false;
-
-        intBoard[0,num3] = sequence[num3];
-
-        //print("R" + (i+1).ToString() + "C" + num3.ToString());
-        cell3 = GameObject.Find("R0C" + (num3).ToString());
-        image3 = cell3.GetComponent<Image>();
-        image3.color = new Color(0, 0, 0, 0);
-        field3 = cell3.transform.GetChild(0).GetComponent<InputField>();
-        field3.text = sequence[num3].ToString();
-        field3.image.color = new Color (0, 1, 0, 1);
-        field3.interactable = false;
     }
 
     public void printBoard(){
     
         for(int i = 0; i < 6; i++){
             string str = "";
-            for(int j = 0; j < sequence.Length; j++){
+            for(int j = 0; j < 6; j++){
                 str += intBoard[i,j] + " ";
             }
             Debug.Log(str);
