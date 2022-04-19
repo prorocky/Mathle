@@ -116,7 +116,12 @@ public class Base_Mathle : MonoBehaviour
         for (int i = 0; i < sequence.Length; i++) {
             // print(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text);
             //print(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text == "");
-            intBoard[currentRow, i] = (GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text != "") ? System.Int32.Parse(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text) : 0;
+            if (currentRow < 6){
+                intBoard[currentRow, i] = (GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text != "") ? System.Int32.Parse(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text) : 0;
+            }
+            else{
+                Debug.Log("Game Over");
+            }
         }
 
 
@@ -156,7 +161,6 @@ public class Base_Mathle : MonoBehaviour
         Col3 = GameObject.Find("R" + (currentRow).ToString() + "C3");
         Col4 = GameObject.Find("R" + (currentRow).ToString() + "C4");
         Col5 = GameObject.Find("R" + (currentRow).ToString() + "C5");
-        //Col6 = GameObject.Find("R" + (currentRow).ToString() + "C6");
 
         col0 = Col0.GetComponent<Animator>();
         col0.SetBool("Error", true);
@@ -182,9 +186,6 @@ public class Base_Mathle : MonoBehaviour
         col5.SetBool("Error", true);
         col5.Play("CellShake");
 
-        //col6 = Col6.GetComponent<Animator>();
-        //col6.SetBool("Error", true);
-        //col6.Play("CellShake");
 
 
         StartCoroutine(Wait(col0));
@@ -193,7 +194,7 @@ public class Base_Mathle : MonoBehaviour
         StartCoroutine(Wait(col3));
         StartCoroutine(Wait(col4));
         StartCoroutine(Wait(col5));
-        //StartCoroutine(Wait(col6));
+        
 
         
         
@@ -231,12 +232,17 @@ public class Base_Mathle : MonoBehaviour
 
     // function to check whether every cell in a row has text in it
     bool rowFilled() {
-        for (int i = 0; i < sequence.Length; i++) {
-            if (intBoard[currentRow, i] == 0 && GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text != "0") {
-                return false;
+        if (currentRow < 6){
+            for (int i = 0; i < sequence.Length; i++) {
+                if (intBoard[currentRow, i] == 0 && GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text != "0") {
+                    return false;
+                }
             }
+            return true;
+        }else{
+            Debug.Log("Game Over");
+            return false;
         }
-        return true;
     }
 
     void checkRow() {
@@ -248,7 +254,11 @@ public class Base_Mathle : MonoBehaviour
 
     void nextRow() {
         currentRow++;
-        fillRow();        
+        Debug.Log("Current Row" + currentRow);
+        if (currentRow < 6){
+            fillRow();  
+        }
+              
     }
 
     bool isCorrect(int col) {
