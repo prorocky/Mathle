@@ -128,9 +128,6 @@ public class Base_Mathle : MonoBehaviour
                 GameObject thisCell = GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString());
                 intBoard[currentRow, i] = (thisCell.GetComponentInChildren<InputField>().text != "" && thisCell.GetComponentInChildren<InputField>().text != "-") ? System.Int32.Parse(thisCell.GetComponentInChildren<InputField>().text) : 0;
             }
-            else{
-                Debug.Log("Game Over");
-            }
         }
 
 
@@ -149,16 +146,17 @@ public class Base_Mathle : MonoBehaviour
                 // popup?
                 break;
             case SolutionCode.Continue:
-            print("continuing game");
+                print("continuing game");
                 checkRow();
                 nextRow();
                 break;
             case SolutionCode.WinGame:
                 checkRow();
+                print("you win");
                 break;
             case SolutionCode.LoseGame:
                 checkRow();
-            print("you lose");
+                print("you lose");
                 break;
         }
     }
@@ -231,7 +229,7 @@ public class Base_Mathle : MonoBehaviour
             return SolutionCode.WinGame;
         }
 
-        if (currentRow == 6) {
+        if (currentRow >= 5) {
             return SolutionCode.LoseGame;
         }
 
@@ -248,7 +246,7 @@ public class Base_Mathle : MonoBehaviour
                 }
             }
             return true;
-        }else{
+        } else{
             Debug.Log("Game Over");
             return false;
         }
@@ -263,7 +261,6 @@ public class Base_Mathle : MonoBehaviour
 
     void nextRow() {
         currentRow++;
-        Debug.Log("Current Row" + currentRow);
         if (currentRow < 6){
             fillRow();  
         }
