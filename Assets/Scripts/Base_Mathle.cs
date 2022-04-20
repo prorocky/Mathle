@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Base_Mathle : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class Base_Mathle : MonoBehaviour
     public int currentRow = 0;     // keep track of what row player is on
     EventSystem system;
     public Button checkSol;
+    string currentDate; // stores current date as string
 
     //Error Message
     public Color targetColor = new Color(1, 1, 1, 0);
@@ -42,14 +44,15 @@ public class Base_Mathle : MonoBehaviour
     void Start()
     {
         
-        
+        currentDate = System.DateTime.Now.ToString("yyyyMMdd");
 
         system = EventSystem.current;
         checkSol.onClick.AddListener(checkSolPressed);
-        
-        createSequence();
+        // check date/time, turn into int, pass into createSequence as parameter
+        int date = System.Int32.Parse(System.DateTime.Now.ToString("yyyyMMdd"));
+        createSequence(date);
         while (sequence[0] == sequence[1]) {
-            createSequence();
+            createSequence(date);
         }
 
         print("Sequence.length = " + sequence.Length);
@@ -67,12 +70,17 @@ public class Base_Mathle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        string updatedDate = System.DateTime.Now.ToString("yyyyMMdd");
+        if (currentDate != updatedDate) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
-    void createSequence() {
+    void createSequence(int dateSeed) {
         // 0 add, 1 sub, 2 mult
         // sequence op num2 op num3
+        
+        Random.InitState(dateSeed);
         int op1 = Random.Range(0,3);
         int op2 = Random.Range(0,3);
 
@@ -117,7 +125,8 @@ public class Base_Mathle : MonoBehaviour
             // print(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text);
             //print(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text == "");
             if (currentRow < 6){
-                intBoard[currentRow, i] = (GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text != "") ? System.Int32.Parse(GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString()).GetComponentInChildren<InputField>().text) : 0;
+                GameObject thisCell = GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString());
+                intBoard[currentRow, i] = (thisCell.GetComponentInChildren<InputField>().text != "" && thisCell.GetComponentInChildren<InputField>().text != "-") ? System.Int32.Parse(thisCell.GetComponentInChildren<InputField>().text) : 0;
             }
             else{
                 Debug.Log("Game Over");
