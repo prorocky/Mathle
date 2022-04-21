@@ -44,6 +44,7 @@ public class Base_Mathle : MonoBehaviour
     //Audios
     public AudioClip Correct;
     public AudioClip Wrong;
+    public AudioClip Neutral;
     public AudioSource audio1;
 
     //EndGame Screen
@@ -159,6 +160,7 @@ public class Base_Mathle : MonoBehaviour
             case SolutionCode.Continue:
                 
                 print("continuing game");
+                audio1.PlayOneShot(Neutral, 0.7f);
                 checkRow();
                 nextRow();
                 break;
