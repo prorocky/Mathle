@@ -153,13 +153,14 @@ public class Base_Mathle : MonoBehaviour
                 // popup?
                 break;
             case SolutionCode.Continue:
-                audio1.PlayOneShot(Correct, 0.7f);
+                
                 print("continuing game");
                 checkRow();
                 nextRow();
                 break;
             case SolutionCode.WinGame:
                 checkRow();
+                audio1.PlayOneShot(Correct, 0.7f);
                 print("you win");
                 break;
             case SolutionCode.LoseGame:
