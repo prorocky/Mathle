@@ -35,10 +35,16 @@ public class Base_Mathle : MonoBehaviour
     //Error Message
     public Color targetColor = new Color(1, 1, 1, 0);
     public Image ImageToFade;
+    public Text TextToFade;
 
     //Animations
     private GameObject Col0, Col1, Col2, Col3, Col4, Col5;
     private Animator col0, col1, col2, col3, col4, col5;
+
+    //Audios
+    public AudioClip Correct;
+    public AudioClip Wrong;
+    public AudioSource audio1;
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +69,7 @@ public class Base_Mathle : MonoBehaviour
 
         // fillBoard();
         // print(BOARD[0][0]);
-
+        
         
     }
 
@@ -138,14 +144,16 @@ public class Base_Mathle : MonoBehaviour
                 print("row is not fully filled");
                 //Error Message
                 ImageToFade.color = new Color(1, 1, 1, 1);
+                TextToFade.color = new Color (0, 0, 0, 1);
                 PlayAnimation();
                 StartCoroutine(LerpFunction(targetColor, 1.5f));
-
+                audio1.PlayOneShot(Wrong, 0.7f);
                 // play noise?
                 // animation?
                 // popup?
                 break;
             case SolutionCode.Continue:
+                audio1.PlayOneShot(Correct, 0.7f);
                 print("continuing game");
                 checkRow();
                 nextRow();
@@ -281,25 +289,25 @@ public class Base_Mathle : MonoBehaviour
             // do flip animation?
 
             // change color to green
-            image1.color = Color.black;
-            field1.image.color = Color.green;
+            image1.color = new Color(0.02830189f,0.02830189f,0.02830189f,1);    //black
+            field1.image.color = new Color (0.4666667f, 0.86666671f, 0.4666667f, 1);                      //green
             field1.text = sequence[col].ToString();
 
         } else if (intBoard[row,col] < sequence[col]) {
             // do flip animation?
 
             // change color to red
-            image1.color = Color.black;
-            field1.image.color = Color.red;
+            image1.color = new Color(0.02830189f,0.02830189f,0.02830189f,1);    //black
+            field1.image.color = new Color(1, .4f, .4f, 1f);                       //red
             field1.text = intBoard[row,col].ToString();
 
         } else {
             // do flip animation?
 
             // change color to blue
-            image1.color = Color.black;
-            field1.image.color = Color.blue;
-            field1.text = intBoard[row,col].ToString();
+            image1.color = new Color(0.02830189f,0.02830189f,0.02830189f,1);    //black
+            field1.image.color = new Color(0.654902f, 0.7803922f, 0.9058824f, 1);                       //blue
+            field1.text = intBoard[row,col].ToString(); 
 
         }
         field1.interactable = false;
@@ -404,7 +412,7 @@ public class Base_Mathle : MonoBehaviour
             //     thisCell.GetComponentInChildren<InputField>().interactable = true;
             // }
 
-            if (prevCell.GetComponentInChildren<InputField>().image.color == Color.green) {
+            if (prevCell.GetComponentInChildren<InputField>().image.color == new Color (0.4666667f, 0.86666671f, 0.4666667f, 1)) {                                        //green
                 thisCell.GetComponentInChildren<InputField>().image.color = prevCell.GetComponentInChildren<InputField>().image.color;
                 thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
             } else {
@@ -438,7 +446,7 @@ public class Base_Mathle : MonoBehaviour
         image1.color = new Color(0, 0, 0, 0);
         field1 = cell1.transform.GetChild(0).GetComponent<InputField>();
         field1.text = sequence[num1].ToString();
-        field1.image.color = new Color (0, 1, 0, 1);
+        field1.image.color = new Color (0.4666667f, 0.86666671f, 0.4666667f, 1);                  //green
         field1.interactable = false;
 
 
@@ -450,7 +458,7 @@ public class Base_Mathle : MonoBehaviour
         image2.color = new Color(0, 0, 0, 0);
         field2 = cell2.transform.GetChild(0).GetComponent<InputField>();
         field2.text = sequence[num2].ToString();
-        field2.image.color = new Color (0, 1, 0, 1);
+        field2.image.color = new Color (0.4666667f, 0.86666671f, 0.4666667f, 1);                  //green
         field2.interactable = false;
     }
 
@@ -478,12 +486,15 @@ public class Base_Mathle : MonoBehaviour
     {
         float time = 0;
         Color startValue = ImageToFade.color;
+        Color startValue2 = TextToFade.color;
         while (time < duration)
         {
             ImageToFade.color = Color.Lerp(startValue, endValue, time / duration);
+            TextToFade.color = Color.Lerp(startValue2, endValue, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
         ImageToFade.color = endValue;
+        TextToFade.color = endValue;
     }
 }
