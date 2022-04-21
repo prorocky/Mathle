@@ -46,6 +46,10 @@ public class Base_Mathle : MonoBehaviour
     public AudioClip Wrong;
     public AudioSource audio1;
 
+    //EndGame Screen
+
+    public GameObject EndScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -161,10 +165,12 @@ public class Base_Mathle : MonoBehaviour
             case SolutionCode.WinGame:
                 checkRow();
                 audio1.PlayOneShot(Correct, 0.7f);
+                EndScreen.SetActive(true);
                 print("you win");
                 break;
             case SolutionCode.LoseGame:
                 checkRow();
+                EndScreen.SetActive(true);
                 print("you lose");
                 break;
         }
