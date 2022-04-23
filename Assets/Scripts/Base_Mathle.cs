@@ -15,11 +15,21 @@ public class Base_Mathle : MonoBehaviour
     // - win/lose
 
     public SaveAndLoad save; //This PROPERLY accesses SaveAndLoad script
+    public StreakSystem streakLibrary;
     private PlayerData playerData;
+    private StreakSave streakSave;
 
     public int [] sequence = new int[6]; // Num array with solutions
     public int [] playerSequence = new int[6]; // Array for keeping track of most complete answer
     int [,] intBoard = new int [6, 6]; // Array for the board
+    int[] undeletableLoad;
+    int streak;
+    int previousDate;
+    string streakResult;
+    
+    public Text displayedStreakText;
+    public Text displayedSequenceText;
+    public Text displayedStreakNumber;
 
     [SerializeField]
     public GameObject [] Row0, Row1, Row2, Row3, Row4, Row5;
@@ -53,6 +63,8 @@ public class Base_Mathle : MonoBehaviour
     //EndGame Screen
 
     public GameObject EndScreen;
+    public GameObject lossSequence;
+    public GameObject streakCount;
 
     // Start is called before the first frame update
     void Start()
@@ -65,20 +77,21 @@ public class Base_Mathle : MonoBehaviour
         }else {
             playerData = CreatePlayerData();
         }
-        //playerData = CreatePlayerData();
 
-        //if (playerData.won) { //the player has already won today (check date!)
-        //    //END HERE
-        //}
+        StreakSave tempStreakLoad = save.LoadStreak();
+        if (tempStreakLoad != null) {
+            streakSave = save.LoadStreak();
+        }else {
+            print("GOT HERE");
+            streakSave = CreateStreakSave();
+        }
         
         intBoard = convertTo2D(playerData.intBoard);
         sequence = playerData.sequence;
         currentRow = playerData.currentRow;
 
-        print("ARRAY");
-        foreach (int x in playerData.intBoard) {
-            Debug.Log(x + ", ");
-        }
+        streak = streakSave.streak;
+        previousDate = streakSave.date;
 
         int currentRowSave = currentRow;
 
@@ -87,19 +100,40 @@ public class Base_Mathle : MonoBehaviour
                 currentRow = i;
                 checkRow();
             }
-            checkSolPressed();
+            if (!playerData.finished) {
+                checkSolPressed();
+            }
         }
+        
+        if (playerData.finished) {
+            EndScreen.SetActive(true);
+            if (streakSave.streak >= 0) {
+                displayedStreakNumber.text = "Streak Count: " + streak.ToString();
+                streakCount.SetActive(true);
+            }else {
+                displayedSequenceText.text = convertSequence(sequence);
+                lossSequence.SetActive(true);
+            }
+        }
+        
+
 
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
         currentDate = System.DateTime.Now.ToString("yyyyMMdd");
+        
+        if (previousDate != 0) {
+            if (currentDate != previousDate.ToString()) {
+                save.DeleteData();
+            }
+        }
+
+        //print(currentDate);
 
         system = EventSystem.current;
         checkSol.onClick.AddListener(checkSolPressed);
         // check date/time, turn into int, pass into createSequence as parameter
         int date = System.Int32.Parse(System.DateTime.Now.ToString("yyyyMMdd"));
+        //print("DATE: " + date);
         createSequence(date);
         while (sequence[0] == sequence[1]) {
             createSequence(date);
@@ -115,14 +149,106 @@ public class Base_Mathle : MonoBehaviour
         // print(BOARD[0][0]);
     }
 
+    public string streakManager (int streakValue, int streak, int date) { // streak value = -1 or 1
+        // 0 = blank slate (first run)
+        // 1 = 1 win
+        // 2+ = win streak
+        // -1 = 1 loss
+        string result = "";
+        int streakCount = streakCountConverter(streakSave.streak);
+
+        switch (streakCount) { // streak = what was loaded
+            case 0: //first win or loss
+                streakSave.streak += streakValue;
+                if (streakSave.streak > 0) {
+                    //print from  startBank
+                    result = bankPrinter(streakLibrary.startBank);
+                }else {
+                    //print from failedBank
+                    result = bankPrinter(streakLibrary.failedBank);
+                }
+                break;
+
+            case 1:
+                if (streakValue == 1) {
+                    streakSave.streak += streakValue;
+                    if (streakSave.streak > 1) {
+                        // print from streakBank
+                        result = bankPrinter(streakLibrary.streakBank);
+                    }else {
+                        //print streakStartWord
+                        result = streakLibrary.streakStartWord;
+                    }
+                }else {
+                    streakSave.streak = -1;
+                    if (streakSave.streak > 1) {
+                        // print from streakBreakBank
+                        result = bankPrinter(streakLibrary.streakBreakBank);
+                    }else {
+                        // failedBank
+                        result = bankPrinter(streakLibrary.failedBank);
+                    }
+                }
+                break;
+
+            case -1:
+                if (streakValue == -1) {
+                    streakSave.streak += streakValue;
+                    //print from failedBank
+                    result = bankPrinter(streakLibrary.failedBank);
+                }else {
+                    //print from startBank
+                    result = bankPrinter(streakLibrary.startBank);
+                    streakSave.streak = 1;
+                }
+                break;
+
+            default:
+                break;
+        }
+        streakSave.date = date;
+        save.SaveStreak(streakSave);
+
+        return result;
+
+    }
+
+    public int streakCountConverter(int streak) {
+        int streakCountConverted;
+
+        if (streak > 0) {
+            streakCountConverted = 1;
+        }else if (streak < 0) {
+            streakCountConverted = -1;
+        }else {
+            streakCountConverted = 0;
+        }
+
+        return streakCountConverted;
+    }
+    public string bankPrinter(string[] bank) {
+        int randomizer;
+        randomizer = Random.Range(0, bank.Length);
+
+        return bank[randomizer];
+    }
+
     public PlayerData CreatePlayerData() {
         int[] board = new int [36];
         int[] sequence = new int [6];
         int currentRow = 0;
-        bool won = false;
+        bool finished = false;
         bool started = false;
-        playerData = new PlayerData(board, sequence, currentRow, won, started);
+        playerData = new PlayerData(board, sequence, currentRow, finished, started);
         return playerData;
+    }
+
+    public StreakSave CreateStreakSave() {
+        int streak = 0;
+        int date = 0;
+
+        streakSave = new StreakSave(streak, date);
+        return streakSave;
     }
 
     public int[] convertTo1D (int[,] boardToConvert) {
@@ -151,6 +277,7 @@ public class Base_Mathle : MonoBehaviour
     {
         string updatedDate = System.DateTime.Now.ToString("yyyyMMdd");
         if (currentDate != updatedDate) {
+            // save.DeleteData();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
@@ -246,17 +373,23 @@ public class Base_Mathle : MonoBehaviour
             case SolutionCode.WinGame:
                 checkRow();
 
-                //saveboard, currentRow, and won(true)
+                //saveboard, currentRow, and finished(true)
                 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 playerData.intBoard = convertTo1D(intBoard);
                 playerData.currentRow = currentRow;
-                playerData.won = true;
+                playerData.finished = true;
                 playerData.started = true;
                 save.SaveData(playerData);
+                
+                streakResult = streakManager(1, streak, int.Parse(currentDate));
                 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 audio1.PlayOneShot(Correct, 0.7f);
+
+                displayedStreakNumber.text = "Streak Count: " + streak.ToString();
+                displayedStreakText.text = streakResult;
                 EndScreen.SetActive(true);
+                streakCount.SetActive(true);
                 print("you win");
                 break;
             case SolutionCode.LoseGame:
@@ -267,13 +400,27 @@ public class Base_Mathle : MonoBehaviour
                 playerData.intBoard = convertTo1D(intBoard);
                 playerData.currentRow = currentRow;
                 playerData.started = true;
+                playerData.finished = true;
                 save.SaveData(playerData);
-                // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+                streakResult = streakManager(-1, streak, int.Parse(currentDate));
+                // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                displayedStreakText.text = streakResult;
+                displayedSequenceText.text = convertSequence(sequence);
                 EndScreen.SetActive(true);
+                lossSequence.SetActive(true);
                 print("you lose");
                 break;
         }
+    }
+
+    public string convertSequence(int[] sequence) {
+        string sequenceString = " | ";
+        foreach (int num in sequence) {
+            sequenceString += num.ToString() + " | ";
+        }
+
+        return sequenceString;
     }
 
     void PlayAnimation(){
@@ -386,10 +533,11 @@ public class Base_Mathle : MonoBehaviour
         return GameObject.Find("R" + (currentRow).ToString() + "C" + (col).ToString()).GetComponentInChildren<InputField>().text == sequence[col].ToString();
     }
 
-    IEnumerator isNumCorrect(int row, int col) {
+IEnumerator isNumCorrect(int row, int col) {
         GameObject thisCell = GameObject.Find("R" + (row).ToString() + "C" + (col).ToString());
         image1 = thisCell.GetComponent<Image>();
         field1 = thisCell.transform.GetChild(0).GetComponent<InputField>();
+        float r = 0.5f, g = 1.0f, b = 0.5f;
 
         // if number is correct, make green and store into player sequence object
         if (intBoard[row,col] == sequence[col]) {
@@ -397,23 +545,60 @@ public class Base_Mathle : MonoBehaviour
 
             // change color to green
             image1.color = new Color(0.02830189f,0.02830189f,0.02830189f,1);    //black
-            field1.image.color = new Color (0.4666667f, 0.86666671f, 0.4666667f, 1);                      //green
+            // field1.image.color = new Color (0.4666667f, 0.86666671f, 0.4666667f, 1);                      //green
+            field1.image.color = new Color (r, g, b, 1);
             field1.text = sequence[col].ToString();
 
         } else if (intBoard[row,col] < sequence[col]) {
             // do flip animation?
 
+            int n = sequence[col] - intBoard[row,col];
+            if (n < 5) {
+                r += .1f;
+                g -= .1f;
+            } else if (n < 10) {
+                r += .2f;
+                g -= .2f;
+            } else if (n < 15) {
+                r += .3f;
+                g -= .3f;
+            } else if (n < 20){
+                r += .4f;
+                g -= .4f;
+            } else {
+                r += .5f;
+                g -= .5f;
+            }
+
             // change color to red
             image1.color = new Color(0.02830189f,0.02830189f,0.02830189f,1);    //black
-            field1.image.color = new Color(1, .4f, .4f, 1f);                       //red
+            field1.image.color = new Color(r, g, b, 1);                       //red
             field1.text = intBoard[row,col].ToString();
 
         } else {
             // do flip animation?
 
+            int n = intBoard[row,col] - sequence[col];
+            if (n < 5) {
+                b += .1f;
+                g -= .1f;
+            } else if (n < 10) {
+                b += .2f;
+                g -= .2f;
+            } else if (n < 15) {
+                b += .3f;
+                g -= .3f;
+            } else if (n < 20){
+                b += .4f;
+                g -= .4f;
+            } else {
+                b += .5f;
+                g -= .5f;
+            }
+
             // change color to blue
             image1.color = new Color(0.02830189f,0.02830189f,0.02830189f,1);    //black
-            field1.image.color = new Color(0.654902f, 0.7803922f, 0.9058824f, 1);                       //blue
+            field1.image.color = new Color(r, g, b, 1);                       //blue
             field1.text = intBoard[row,col].ToString(); 
 
         }
@@ -512,7 +697,7 @@ public class Base_Mathle : MonoBehaviour
             GameObject thisCell = GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString());
             GameObject prevCell = GameObject.Find("R" + (currentRow - 1).ToString() + "C" + (i).ToString());
 
-            if (prevCell.GetComponentInChildren<InputField>().image.color == new Color (0.4666667f, 0.86666671f, 0.4666667f, 1)) {  //GREEN                                   //green
+            if (prevCell.GetComponentInChildren<InputField>().image.color == new Color (0.5f, 1.0f, 0.5f, 1)) {  //GREEN                                   //green
                 thisCell.GetComponentInChildren<InputField>().image.color = prevCell.GetComponentInChildren<InputField>().image.color;
                 thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
             } else {
@@ -546,7 +731,7 @@ public class Base_Mathle : MonoBehaviour
         image1.color = new Color(0, 0, 0, 0);
         field1 = cell1.transform.GetChild(0).GetComponent<InputField>();
         field1.text = sequence[num1].ToString();
-        field1.image.color = new Color (0.4666667f, 0.86666671f, 0.4666667f, 1);                  //green
+        field1.image.color = new Color (0.5f, 1.0f, 0.5f, 1);                  //green
         field1.interactable = false;
 
 
@@ -558,7 +743,7 @@ public class Base_Mathle : MonoBehaviour
         image2.color = new Color(0, 0, 0, 0);
         field2 = cell2.transform.GetChild(0).GetComponent<InputField>();
         field2.text = sequence[num2].ToString();
-        field2.image.color = new Color (0.4666667f, 0.86666671f, 0.4666667f, 1);                  //green
+        field2.image.color = new Color (0.5f, 1.0f, 0.5f, 1);                  //green
         field2.interactable = false;
     }
 

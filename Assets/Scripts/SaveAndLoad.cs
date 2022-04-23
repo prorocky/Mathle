@@ -5,10 +5,9 @@ using System.IO;
 
 public class SaveAndLoad : MonoBehaviour
 {
-    public string test = "LET'S GO!";
-    //private PlayerData playerData;
     private string path = "";
     private string pPath = "";
+    private string streakPath = "";
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +19,7 @@ public class SaveAndLoad : MonoBehaviour
     private void SetPaths(){
         path = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
         pPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "SaveData.json";  
+        streakPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "StreakData.json";
     }
 
     // Update is called once per frame
@@ -31,6 +31,10 @@ public class SaveAndLoad : MonoBehaviour
 
         // if (Input.GetKeyDown(KeyCode.L)) {
         //     LoadData();
+        // }
+
+        // if (Input.GetKeyDown(KeyCode.X)) {
+        //     DeleteData();
         // }
     }
 
@@ -58,4 +62,32 @@ public class SaveAndLoad : MonoBehaviour
             return null;
         }
     }
+
+    public void DeleteData() {
+        if (File.Exists(pPath)) {
+            File.Delete(pPath);
+        }
+    }
+
+    public void SaveStreak(StreakSave streakSave) {
+
+        string jsonStreak = JsonUtility.ToJson(streakSave);
+        
+        using StreamWriter writer = new StreamWriter(streakPath);
+        writer.Write(jsonStreak);
+    }
+
+    public StreakSave LoadStreak() {
+        if (File.Exists(streakPath)) {
+            using StreamReader reader = new StreamReader(streakPath);
+            string jsonStreak = reader.ReadToEnd();
+
+            StreakSave streakSave = JsonUtility.FromJson<StreakSave>(jsonStreak);
+            return streakSave;
+        }else {
+            return null;
+        }
+    }
+
+    
 }
