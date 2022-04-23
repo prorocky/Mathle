@@ -8,15 +8,18 @@ using UnityEngine.SceneManagement;
 
 public class Base_Mathle : MonoBehaviour
 {
+    //things to save
+    // - board
+    // - current row
+    // - sequence
+    // - win/lose
 
-    // Num array with solutions
-    public int [] sequence = new int[6];
+    public SaveAndLoad save; //This PROPERLY accesses SaveAndLoad script
+    private PlayerData playerData;
 
-    // Array for keeping track of most complete answer
-    public int [] playerSequence = new int[6];
-
-    // Array for the board
-    int [,] intBoard = new int[6,6];
+    public int [] sequence = new int[6]; // Num array with solutions
+    public int [] playerSequence = new int[6]; // Array for keeping track of most complete answer
+    int [,] intBoard = new int [6, 6]; // Array for the board
 
     [SerializeField]
     public GameObject [] Row0, Row1, Row2, Row3, Row4, Row5;
@@ -54,7 +57,43 @@ public class Base_Mathle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //load base board and update current row
+        PlayerData tempLoad = save.LoadData(); //if something can be loaded, the LOAD
+        if (tempLoad != null) {
+            playerData = save.LoadData();
+        }else {
+            playerData = CreatePlayerData();
+        }
+        //playerData = CreatePlayerData();
+
+        //if (playerData.won) { //the player has already won today (check date!)
+        //    //END HERE
+        //}
         
+        intBoard = convertTo2D(playerData.intBoard);
+        sequence = playerData.sequence;
+        currentRow = playerData.currentRow;
+
+        print("ARRAY");
+        foreach (int x in playerData.intBoard) {
+            Debug.Log(x + ", ");
+        }
+
+        int currentRowSave = currentRow;
+
+        if (playerData.started){
+            for (int i = 0; i <= currentRowSave; i++) {
+                currentRow = i;
+                checkRow();
+            }
+            checkSolPressed();
+        }
+
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
         currentDate = System.DateTime.Now.ToString("yyyyMMdd");
 
         system = EventSystem.current;
@@ -74,8 +113,37 @@ public class Base_Mathle : MonoBehaviour
 
         // fillBoard();
         // print(BOARD[0][0]);
-        
-        
+    }
+
+    public PlayerData CreatePlayerData() {
+        int[] board = new int [36];
+        int[] sequence = new int [6];
+        int currentRow = 0;
+        bool won = false;
+        bool started = false;
+        playerData = new PlayerData(board, sequence, currentRow, won, started);
+        return playerData;
+    }
+
+    public int[] convertTo1D (int[,] boardToConvert) {
+        int index = 0;
+        int[] newArray1D = new int[36];
+        for (int i = 0; i < 6; i++){
+            for (int j = 0; j < 6; j++) {
+                newArray1D[index++] = boardToConvert[i, j];
+            }
+        }
+        return newArray1D;
+    }
+
+    public int[,] convertTo2D (int[] boardToConvert) {
+        int[,] newArray2D = new int[6, 6];
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                newArray2D[i, j] = boardToConvert[i * 6 + j];
+            }
+        }
+        return newArray2D;
     }
 
     // Update is called once per frame
@@ -121,6 +189,8 @@ public class Base_Mathle : MonoBehaviour
         }
 
         getSolution(op1,op2,num1,num2,num3);
+        
+        //SAVE SOLUTION
     }
     public enum SolutionCode : int
         {
@@ -160,18 +230,46 @@ public class Base_Mathle : MonoBehaviour
             case SolutionCode.Continue:
                 
                 print("continuing game");
+
+                //saveboard and currentRow
+                // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                playerData.intBoard = convertTo1D(intBoard);
+                playerData.currentRow = currentRow;
+                playerData.started = true;
+                save.SaveData(playerData);
+                // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
                 audio1.PlayOneShot(Neutral, 0.7f);
                 checkRow();
                 nextRow();
                 break;
             case SolutionCode.WinGame:
                 checkRow();
+
+                //saveboard, currentRow, and won(true)
+                // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                playerData.intBoard = convertTo1D(intBoard);
+                playerData.currentRow = currentRow;
+                playerData.won = true;
+                playerData.started = true;
+                save.SaveData(playerData);
+                // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
                 audio1.PlayOneShot(Correct, 0.7f);
                 EndScreen.SetActive(true);
                 print("you win");
                 break;
             case SolutionCode.LoseGame:
                 checkRow();
+
+                //saveboard, currentRow, and won(false)
+                // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                playerData.intBoard = convertTo1D(intBoard);
+                playerData.currentRow = currentRow;
+                playerData.started = true;
+                save.SaveData(playerData);
+                // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
                 EndScreen.SetActive(true);
                 print("you lose");
                 break;
@@ -414,14 +512,7 @@ public class Base_Mathle : MonoBehaviour
             GameObject thisCell = GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString());
             GameObject prevCell = GameObject.Find("R" + (currentRow - 1).ToString() + "C" + (i).ToString());
 
-            // if (prevCell.GetComponent<Image>().color == Color.green) {
-            //     thisCell.GetComponent<Image>().color = prevCell.GetComponent<Image>().color;
-            //     thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
-            // } else {
-            //     thisCell.GetComponentInChildren<InputField>().interactable = true;
-            // }
-
-            if (prevCell.GetComponentInChildren<InputField>().image.color == new Color (0.4666667f, 0.86666671f, 0.4666667f, 1)) {                                        //green
+            if (prevCell.GetComponentInChildren<InputField>().image.color == new Color (0.4666667f, 0.86666671f, 0.4666667f, 1)) {  //GREEN                                   //green
                 thisCell.GetComponentInChildren<InputField>().image.color = prevCell.GetComponentInChildren<InputField>().image.color;
                 thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
             } else {
