@@ -31,6 +31,10 @@ public class Base_Mathle : MonoBehaviour
     public Text displayedSequenceText;
     public Text displayedStreakNumber;
 
+    public GameObject displayedSequenceImage;
+
+    
+
     [SerializeField]
     public GameObject [] Row0, Row1, Row2, Row3, Row4, Row5;
     public GameObject[][] BOARD = new GameObject[6][];
@@ -108,10 +112,11 @@ public class Base_Mathle : MonoBehaviour
         if (playerData.finished) {
             EndScreen.SetActive(true);
             if (streakSave.streak >= 0) {
-                displayedStreakNumber.text = "Streak Count: " + streak.ToString();
+                displayedStreakNumber.text = streak.ToString();
                 streakCount.SetActive(true);
             }else {
                 displayedSequenceText.text = convertSequence(sequence);
+                displayedSequenceImage.SetActive(true);
                 lossSequence.SetActive(true);
             }
         }
@@ -386,7 +391,7 @@ public class Base_Mathle : MonoBehaviour
 
                 audio1.PlayOneShot(Correct, 0.7f);
 
-                displayedStreakNumber.text = "Streak Count: " + streak.ToString();
+                displayedStreakNumber.text = streak.ToString();
                 displayedStreakText.text = streakResult;
                 EndScreen.SetActive(true);
                 streakCount.SetActive(true);
@@ -395,6 +400,7 @@ public class Base_Mathle : MonoBehaviour
             case SolutionCode.LoseGame:
                 checkRow();
 
+                displayedStreakNumber.text = "0";
                 //saveboard, currentRow, and won(false)
                 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 playerData.intBoard = convertTo1D(intBoard);
@@ -407,6 +413,7 @@ public class Base_Mathle : MonoBehaviour
                 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 displayedStreakText.text = streakResult;
                 displayedSequenceText.text = convertSequence(sequence);
+                displayedSequenceImage.SetActive(true);
                 EndScreen.SetActive(true);
                 lossSequence.SetActive(true);
                 print("you lose");
