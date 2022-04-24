@@ -537,7 +537,7 @@ IEnumerator isNumCorrect(int row, int col) {
         GameObject thisCell = GameObject.Find("R" + (row).ToString() + "C" + (col).ToString());
         image1 = thisCell.GetComponent<Image>();
         field1 = thisCell.transform.GetChild(0).GetComponent<InputField>();
-        float r = 0.5f, g = 1.0f, b = 0.5f;
+        float r = 0.47f, g = .87f, b = 0.47f;
 
         // if number is correct, make green and store into player sequence object
         if (intBoard[row,col] == sequence[col]) {
@@ -554,20 +554,20 @@ IEnumerator isNumCorrect(int row, int col) {
 
             int n = sequence[col] - intBoard[row,col];
             if (n < 5) {
-                r += .1f;
-                g -= .1f;
+                r += .08f;
+                g -= .08f;
             } else if (n < 10) {
                 r += .2f;
                 g -= .2f;
             } else if (n < 15) {
-                r += .3f;
-                g -= .3f;
+                r += .32f;
+                g -= .32f;
             } else if (n < 20){
-                r += .4f;
-                g -= .4f;
+                r += .44f;
+                g -= .44f;
             } else {
-                r += .5f;
-                g -= .5f;
+                r += .56f;
+                g -= .56f;
             }
 
             // change color to red
@@ -580,20 +580,20 @@ IEnumerator isNumCorrect(int row, int col) {
 
             int n = intBoard[row,col] - sequence[col];
             if (n < 5) {
-                b += .1f;
-                g -= .1f;
+                b += .08f;
+                g -= .08f;
             } else if (n < 10) {
                 b += .2f;
                 g -= .2f;
             } else if (n < 15) {
-                b += .3f;
-                g -= .3f;
+                b += .32f;
+                g -= .32f;
             } else if (n < 20){
-                b += .4f;
-                g -= .4f;
+                b += .44f;
+                g -= .44f;
             } else {
-                b += .5f;
-                g -= .5f;
+                b += .56f;
+                g -= .56f;
             }
 
             // change color to blue
@@ -697,7 +697,7 @@ IEnumerator isNumCorrect(int row, int col) {
             GameObject thisCell = GameObject.Find("R" + (currentRow).ToString() + "C" + (i).ToString());
             GameObject prevCell = GameObject.Find("R" + (currentRow - 1).ToString() + "C" + (i).ToString());
 
-            if (prevCell.GetComponentInChildren<InputField>().image.color == new Color (0.5f, 1.0f, 0.5f, 1)) {  //GREEN                                   //green
+            if (prevCell.GetComponentInChildren<InputField>().image.color == new Color (0.47f, .87f, 0.47f, 1)) {  //GREEN                                   //green
                 thisCell.GetComponentInChildren<InputField>().image.color = prevCell.GetComponentInChildren<InputField>().image.color;
                 thisCell.GetComponentInChildren<InputField>().text = prevCell.GetComponentInChildren<InputField>().text;
             } else {
