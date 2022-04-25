@@ -26,10 +26,13 @@ public class Base_Mathle : MonoBehaviour
     int streak;
     int previousDate;
     string streakResult;
+    float winRate;
     
     public Text displayedStreakText;
     public Text displayedSequenceText;
     public Text displayedStreakNumber;
+    public Text displayedWinRate;
+    public Text displayedGamesPlayed;
 
     public GameObject displayedSequenceImage;
 
@@ -69,6 +72,8 @@ public class Base_Mathle : MonoBehaviour
     public GameObject EndScreen;
     public GameObject lossSequence;
     public GameObject streakCount;
+
+    public GameObject instructions;
 
     // Start is called before the first frame update
     void Start()
@@ -111,12 +116,19 @@ public class Base_Mathle : MonoBehaviour
         
         if (playerData.finished) {
             EndScreen.SetActive(true);
+
+            winRate = winRateCalculator(streakSave.gamesPlayed, streakSave.wins);
+            displayedWinRate.text = winRate.ToString();
+            displayedGamesPlayed.text = streakSave.gamesPlayed.ToString();
+
             if (streakSave.streak >= 0) {
                 displayedStreakNumber.text = streak.ToString();
+                displayedStreakText.text = streakSave.streakText;
                 streakCount.SetActive(true);
             }else {
                 displayedSequenceText.text = convertSequence(sequence);
                 displayedSequenceImage.SetActive(true);
+                displayedStreakText.text = streakSave.streakText;
                 lossSequence.SetActive(true);
             }
         }
@@ -212,6 +224,7 @@ public class Base_Mathle : MonoBehaviour
                 break;
         }
         streakSave.date = date;
+        streakSave.streakText = result;
         save.SaveStreak(streakSave);
 
         return result;
@@ -251,8 +264,11 @@ public class Base_Mathle : MonoBehaviour
     public StreakSave CreateStreakSave() {
         int streak = 0;
         int date = 0;
+        string streakText = "";
+        int gamesPlayed = 0;
+        int wins = 0;
 
-        streakSave = new StreakSave(streak, date);
+        streakSave = new StreakSave(streak, date, streakText, gamesPlayed, wins);
         return streakSave;
     }
 
@@ -284,6 +300,10 @@ public class Base_Mathle : MonoBehaviour
         if (currentDate != updatedDate) {
             // save.DeleteData();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (Input.GetKeyDown(KeyCode.H)) {
+            instructions.SetActive(!instructions.activeSelf);
         }
     }
 
@@ -386,10 +406,18 @@ public class Base_Mathle : MonoBehaviour
                 playerData.started = true;
                 save.SaveData(playerData);
                 
+                //winrate stuff
+                streakSave.gamesPlayed += 1;
+                streakSave.wins += 1;
+
                 streakResult = streakManager(1, streak, int.Parse(currentDate));
                 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
                 audio1.PlayOneShot(Correct, 0.7f);
+                
+                winRate = winRateCalculator(streakSave.gamesPlayed, streakSave.wins);
+                displayedWinRate.text = winRate.ToString("0.0");
+                displayedGamesPlayed.text = streakSave.gamesPlayed.ToString();
 
                 displayedStreakNumber.text = streak.ToString();
                 displayedStreakText.text = streakResult;
@@ -409,8 +437,14 @@ public class Base_Mathle : MonoBehaviour
                 playerData.finished = true;
                 save.SaveData(playerData);
 
+                streakSave.gamesPlayed += 1;
+
                 streakResult = streakManager(-1, streak, int.Parse(currentDate));
                 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                winRate = winRateCalculator(streakSave.gamesPlayed, streakSave.wins);
+                displayedWinRate.text = winRate.ToString("0.0");
+                displayedGamesPlayed.text = streakSave.gamesPlayed.ToString();
+
                 displayedStreakText.text = streakResult;
                 displayedSequenceText.text = convertSequence(sequence);
                 displayedSequenceImage.SetActive(true);
@@ -419,6 +453,10 @@ public class Base_Mathle : MonoBehaviour
                 print("you lose");
                 break;
         }
+    }
+
+    public float winRateCalculator(int gamesPlayed, int wins) {
+        return (float) wins/gamesPlayed * 100;
     }
 
     public string convertSequence(int[] sequence) {
