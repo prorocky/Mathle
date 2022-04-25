@@ -27,6 +27,10 @@ public class Base_Mathle : MonoBehaviour
     int previousDate;
     string streakResult;
     float winRate;
+    string previousDateSave;
+
+    string tempDateHold;
+    bool initialization = false;
     
     public Text displayedStreakText;
     public Text displayedSequenceText;
@@ -76,95 +80,44 @@ public class Base_Mathle : MonoBehaviour
     public GameObject instructions;
 
     // Start is called before the first frame update
+    // void Awake() {
+
+    // }
+
     void Start()
     {
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        //load base board and update current row
-        PlayerData tempLoad = save.LoadData(); //if something can be loaded, the LOAD
-        if (tempLoad != null) {
-            playerData = save.LoadData();
-        }else {
-            playerData = CreatePlayerData();
-        }
-
         StreakSave tempStreakLoad = save.LoadStreak();
         if (tempStreakLoad != null) {
             streakSave = save.LoadStreak();
         }else {
             print("GOT HERE");
             streakSave = CreateStreakSave();
+            save.SaveStreak(streakSave);
         }
-        
-        intBoard = convertTo2D(playerData.intBoard);
-        sequence = playerData.sequence;
-        currentRow = playerData.currentRow;
-
-        streak = streakSave.streak;
+        //StartCoroutine(luisIsCool());
         previousDate = streakSave.date;
-
-        int currentRowSave = currentRow;
-
-        if (playerData.started){
-            for (int i = 0; i <= currentRowSave; i++) {
-                currentRow = i;
-                checkRow();
-            }
-            if (!playerData.finished) {
-                checkSolPressed();
-            }
-        }
-        
-        if (playerData.finished) {
-            EndScreen.SetActive(true);
-
-            winRate = winRateCalculator(streakSave.gamesPlayed, streakSave.wins);
-            displayedWinRate.text = winRate.ToString();
-            displayedGamesPlayed.text = streakSave.gamesPlayed.ToString();
-
-            if (streakSave.streak >= 0) {
-                displayedStreakNumber.text = streak.ToString();
-                displayedStreakText.text = streakSave.streakText;
-                streakCount.SetActive(true);
-            }else {
-                displayedSequenceText.text = convertSequence(sequence);
-                displayedSequenceImage.SetActive(true);
-                displayedStreakText.text = streakSave.streakText;
-                lossSequence.SetActive(true);
-            }
-        }
-        
-
-
-        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         currentDate = System.DateTime.Now.ToString("yyyyMMdd");
         
-        if (previousDate != 0) {
+        //if (previousDate != 0) {
             if (currentDate != previousDate.ToString()) {
+                print("CURRENT: " + currentDate + "a" + "    PREVIOUS: " + previousDate.ToString("yyyyMMdd") + "a");
+                print("DELETING HERE");
                 save.DeleteData();
+                streakSave.date = int.Parse(currentDate);
+                save.SaveStreak(streakSave);
             }
-        }
+        //}
 
-        //print(currentDate);
-
-        system = EventSystem.current;
-        checkSol.onClick.AddListener(checkSolPressed);
-        // check date/time, turn into int, pass into createSequence as parameter
-        int date = System.Int32.Parse(System.DateTime.Now.ToString("yyyyMMdd"));
-        //print("DATE: " + date);
-        createSequence(date);
-        while (sequence[0] == sequence[1]) {
-            createSequence(date);
-        }
-
-        print("Sequence.length = " + sequence.Length);
-
-        fillFirstRow();
-        printBoard();
-        printSequence();
-
-        // fillBoard();
-        // print(BOARD[0][0]);
+        initialization = true;
     }
+
+    // IEnumerator luisIsCool() {
+    //     yield return new WaitForSeconds(.1f);
+
+    //     bool continue = 
+        
+    // }
 
     public string streakManager (int streakValue, int streak, int date) { // streak value = -1 or 1
         // 0 = blank slate (first run)
@@ -296,11 +249,110 @@ public class Base_Mathle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (initialization) {
+            print("IN INITIALIZATION");
+            PlayerData tempLoad = save.LoadData(); //if something can be loaded, the LOAD
+            if (tempLoad != null) {
+                playerData = save.LoadData();
+            }else {
+                playerData = CreatePlayerData();
+            }
+
+            print("TEST:" + System.DateTime.Now.ToString());
+            print("TEST:" + streakSave.date.ToString());
+            if (System.DateTime.Now.ToString() != streakSave.date.ToString()) {
+                save.DeleteData();
+            }
+            
+            intBoard = convertTo2D(playerData.intBoard);
+            sequence = playerData.sequence;
+            currentRow = playerData.currentRow;
+
+            streak = streakSave.streak;
+            previousDate = streakSave.date;
+
+            int currentRowSave = currentRow;
+
+            if (playerData.started){
+                for (int i = 0; i <= currentRowSave; i++) {
+                    currentRow = i;
+                    checkRow();
+                }
+                if (!playerData.finished) {
+                    checkSolPressed();
+                }
+            }
+            
+            
+            if (playerData.finished) {
+                EndScreen.SetActive(true);
+
+                winRate = winRateCalculator(streakSave.gamesPlayed, streakSave.wins);
+                displayedWinRate.text = winRate.ToString();
+                displayedGamesPlayed.text = streakSave.gamesPlayed.ToString();
+
+                if (streakSave.streak >= 0) {
+                    displayedStreakNumber.text = streak.ToString();
+                    displayedStreakText.text = streakSave.streakText;
+                    streakCount.SetActive(true);
+                }else {
+                    displayedSequenceText.text = convertSequence(sequence);
+                    displayedSequenceImage.SetActive(true);
+                    displayedStreakText.text = streakSave.streakText;
+                    lossSequence.SetActive(true);
+                }
+            }
+            
+
+
+            // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            currentDate = System.DateTime.Now.ToString("yyyyMMdd");
+            
+            if (previousDate != 0) {
+                if (currentDate != previousDate.ToString()) {
+                    save.DeleteData();
+                }
+            }
+
+            tempDateHold = previousDate.ToString("yyyyMMdd");
+
+            //print(currentDate);
+
+            system = EventSystem.current;
+            checkSol.onClick.AddListener(checkSolPressed);
+            // check date/time, turn into int, pass into createSequence as parameter
+            int date = System.Int32.Parse(System.DateTime.Now.ToString("yyyyMMdd"));
+            //print("DATE: " + date);
+            createSequence(date);
+            while (sequence[0] == sequence[1]) {
+                createSequence(date);
+            }
+
+            print("Sequence.length = " + sequence.Length);
+
+            fillFirstRow();
+            printBoard();
+            printSequence();
+
+            initialization = false;
+                
+        }
+        
+        // string updatedDate = System.DateTime.Now.ToString("yyyyMMdd");
+        if (currentDate != tempDateHold) {
+            tempDateHold = currentDate;
+            save.DeleteData();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         string updatedDate = System.DateTime.Now.ToString("yyyyMMdd");
         if (currentDate != updatedDate) {
-            // save.DeleteData();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //save.DeleteData();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        
+        
 
         if (Input.GetKeyDown(KeyCode.H)) {
             instructions.SetActive(!instructions.activeSelf);
@@ -402,8 +454,8 @@ public class Base_Mathle : MonoBehaviour
                 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 playerData.intBoard = convertTo1D(intBoard);
                 playerData.currentRow = currentRow;
-                playerData.finished = true;
                 playerData.started = true;
+                playerData.finished = true;
                 save.SaveData(playerData);
                 
                 //winrate stuff
